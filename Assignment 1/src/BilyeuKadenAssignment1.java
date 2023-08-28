@@ -6,7 +6,7 @@
  * To get back into the flow of writing code, by reviewing the basics of Java. Such as loops, arrays, and files
  */
 
- import java.util.*;
+import java.util.*;
 
 public class BilyeuKadenAssignment1
 {
@@ -25,7 +25,35 @@ public class BilyeuKadenAssignment1
         System.out.println("---------------------------------");
 
         printArray(array);
+
+        System.out.println("\nAny pair whose sum is 10");
+        System.out.println("---------------------------------");
+
+        print_pairs_with_sum_of_10(array);
         
+    }
+
+//-------------------start-of-print_pairs_with_sum_of_10()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the pairs of numbers in an array that add up to 10
+     * @param array int[] | The array to be searched.
+     * @return None.
+     */
+
+    public static void print_pairs_with_sum_of_10(int[] array)
+    {
+        for(int i = 0; i < array.length; i++)
+        {
+            for(int ii = i; ii < array.length; ii++)
+            {
+                if(array[i] + array[ii] == 10)
+                {
+                    System.out.printf("Pair at index %d and %d -> (%d + %d)\n", i, ii, array[i], array[ii]);
+                }
+            }
+        }
+
     }
 
 //-------------------start-of-printArray()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
