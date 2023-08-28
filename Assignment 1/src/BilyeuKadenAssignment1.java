@@ -20,8 +20,10 @@ public class BilyeuKadenAssignment1
         clearConsole();
 
         int[] array = {17, 10, 2, 16, 8, 15, 9, 17, 14, 18, 1, 19, 17, 2, 0};
+        int[][] matrix = new int[3][5];
 
         File fileName = new File("assignment1.txt");
+        Scanner inputFile = new Scanner(fileName);
         PrintWriter outputFile = new PrintWriter(fileName);
 
         Arrays.sort(array);
@@ -40,10 +42,57 @@ public class BilyeuKadenAssignment1
         System.out.println("---------------------------------");
 
         print_mode_of_array(array);
+
+        write_one_dimensional_array_to_file(array, outputFile);
+
+        read_matrix_from_file(matrix, inputFile);
+
+        System.out.println("\n\nValues from file placed into 2D array - largest to smallest");
+        System.out.println("---------------------------------");
+
+        printMatrix(matrix);
         
     }
 
-    public static void 
+//-------------------start-of-read_matrix_from_file()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Reads the values of an integer matrix from a file
+     * @param matrix int[][] | The matrix to be read into.
+     * @param inputFile Scanner | The file to be read from.
+     * @return None.
+     */
+
+    public static void read_matrix_from_file(int[][] matrix, Scanner inputFile)
+    {
+        for(int i = 0; i < matrix.length; i++)
+        {
+            for(int ii = 0; ii < matrix[i].length; ii++)
+            {
+                matrix[i][ii] = inputFile.nextInt();
+            }
+        }
+    }
+
+//-------------------start-of-write_one_dimensional_array_to_file()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Writes the values of an integer array to a file
+     * @param array int[] | The array to be written.
+     * @param outputFile PrintWriter | The file to be written to.
+     * @return None.
+     */
+
+    public static void write_one_dimensional_array_to_file(int[] array, PrintWriter outputFile)
+    {
+
+        for(int i = 0; i < array.length; i++)
+        {
+            outputFile.println(array[i]);
+        }
+
+        outputFile.close();
+    }
 
 //-------------------start-of-print_mode_of_array()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -102,6 +151,27 @@ public class BilyeuKadenAssignment1
             }
         }
 
+    }
+
+//-------------------start-of-printMatrix()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * prints the values of an integer matrix
+     * @param matrix int[][] | The matrix to be printed.
+     * @return None.
+     */
+
+    public static void printMatrix(int[][] matrix)
+    {
+        for(int i = 0; i < matrix.length; i++)
+        {
+            for(int ii = 0; ii < matrix[i].length; ii++)
+            {
+                System.out.print(matrix[i][ii] + " ");
+            }
+
+            System.out.println("");
+        }
     }
 
 //-------------------start-of-printArray()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
