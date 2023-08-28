@@ -10,7 +10,8 @@
 
 public class BilyeuKadenAssignment1
 {
-    public static void main(String[] args) 
+
+    public static void main(String[] args) throws Exception 
     {
 
         // Clear console
@@ -27,6 +28,14 @@ public class BilyeuKadenAssignment1
         
     }
 
+//-------------------start-of-printArray()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+    * prints the values of an integer array
+    * @param array int[] | The array to be printed.
+    * @return None.
+    */ 
+
     public static void printArray(int[] array)
     {
         for(int i = 0; i < array.length; i++)
@@ -35,6 +44,13 @@ public class BilyeuKadenAssignment1
         }
     }
 
+//-------------------start-of-clearConsole()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Clears the console
+     * @param None.
+     * @return None.
+     */
 
     public static void clearConsole()
     {
