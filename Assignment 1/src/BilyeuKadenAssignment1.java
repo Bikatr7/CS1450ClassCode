@@ -6,6 +6,8 @@
  * To get back into the flow of writing code, by reviewing the basics of Java. Such as loops, arrays, and files
  */
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class BilyeuKadenAssignment1
@@ -19,6 +21,9 @@ public class BilyeuKadenAssignment1
 
         int[] array = {17, 10, 2, 16, 8, 15, 9, 17, 14, 18, 1, 19, 17, 2, 0};
 
+        File fileName = new File("assignment1.txt");
+        PrintWriter outputFile = new PrintWriter(fileName);
+
         Arrays.sort(array);
 
         System.out.println("Values in array sorted");
@@ -30,7 +35,50 @@ public class BilyeuKadenAssignment1
         System.out.println("---------------------------------");
 
         print_pairs_with_sum_of_10(array);
+
+        System.out.println("\nMode value - number that occurs most often");
+        System.out.println("---------------------------------");
+
+        print_mode_of_array(array);
         
+    }
+
+    public static void 
+
+//-------------------start-of-print_mode_of_array()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the mode of an array
+     * @param array int[] | The array to be searched.
+     * @return None.
+     */
+
+    public static void print_mode_of_array(int[] array)
+    {
+        int currentMode = 0;
+        int currentModeCount = 0;
+
+        for(int i = 0; i < array.length; i++)
+        {
+            int currentCount = 0;
+
+            for(int ii = 0; ii < array.length; ii++)
+            {
+                if(array[i] == array[ii])
+                {
+                    currentCount++;
+                }
+            }
+
+            if(currentCount > currentModeCount)
+            {
+                currentMode = array[i];
+                currentModeCount = currentCount;
+            }
+        }
+
+        System.out.printf("%d occurred %d times", currentMode, currentModeCount);
+
     }
 
 //-------------------start-of-print_pairs_with_sum_of_10()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
