@@ -3,7 +3,8 @@
  * CS 1450-002 (Tuesday/Thursday)
  * Due Thursday, August 31st 1:40pm
  * Assignment 1
- * To get back into the flow of writing code, by reviewing the basics of Java. Such as loops, arrays, and files
+ * To get back into the flow of writing code, by reviewing the basics of Java. Such as loops, arrays, and files.
+ * Perform a series of tasks on an array of integers, and later a matrix of integers.
  */
 
 import java.io.File;
@@ -26,6 +27,7 @@ public class BilyeuKadenAssignment1
         Scanner inputFile = new Scanner(fileName);
         PrintWriter outputFile = new PrintWriter(fileName);
 
+        // sort array
         Arrays.sort(array);
 
         System.out.println("Values in array sorted");
