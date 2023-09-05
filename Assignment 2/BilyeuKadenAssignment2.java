@@ -26,12 +26,15 @@ public class BilyeuKadenAssignment2
         Scanner inputFile = new Scanner(fileName);
 
         String type;
-        int age;
         String name;
+
+        int age;
 
         int numOfSharks = inputFile.nextInt();
 
         Shark[] sharks = new Shark[numOfSharks];
+
+        Aquarium aquarium = new Aquarium();
 
         for(int i = 0; i < numOfSharks; i++)
         {
@@ -61,6 +64,10 @@ public class BilyeuKadenAssignment2
         inputFile.close();
 
         displaySharkTable(sharks);
+
+        aquarium.fillAquarium(sharks);
+
+        aquarium.printAquariumDetails();
 
 
     }
@@ -190,32 +197,50 @@ class Aquarium
 
     public void fillAquarium(Shark[] sharks)
     {
+
+        for (Shark shark : sharks)
+        {
+            if (shark instanceof Tiger)
+            {
+                this.numTigerSharks++;
+            }
+            else if (shark instanceof Zebra)
+            {
+                this.numZebraSharks++;
+            }
+        }
+
+        this.aquariumSharks = new Shark[this.numTigerSharks + this.numZebraSharks];
+
         for (Shark shark : sharks)
         {
             if (shark instanceof Tiger)
             {
                 this.aquariumSharks[this.numTigerSharks] = shark;
-                this.numTigerSharks++;
+
             }
             else if (shark instanceof Zebra)
             {
                 this.aquariumSharks[this.numZebraSharks] = shark;
-                this.numZebraSharks++;
             }
         }
     }
 
     public void printAquariumDetails()
     {
+
+        System.out.println("\nShark Aquarium");
+        System.out.println("---------------------------------");
+
         System.out.println("Number of tiger sharks: " + this.numTigerSharks);
         System.out.println("Number of zebra sharks: " + this.numZebraSharks);
+
+        System.out.println("");
         
         for (Shark shark : this.aquariumSharks)
         {
-            if (shark != null)
-            {
-                System.out.println(shark.getType() + " shark named " + shark.getName());
-            }
+
+            System.out.printf("%-5s%-5s%-5s\n", shark.getType(), " ---", shark.getName());
         }
     }
 
