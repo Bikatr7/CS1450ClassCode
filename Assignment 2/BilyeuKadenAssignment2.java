@@ -10,13 +10,12 @@
 
  // Note to grader.
  // Sorry, been writing python too long so I messed up my func names.
- // And as for clearConsole, that's for my own benefit.
+ // And as for clearConsole, that's for my own benefit, but I'll exclude it from future assignments.
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
  
-
 public class BilyeuKadenAssignment2
 {
 
@@ -25,9 +24,9 @@ public class BilyeuKadenAssignment2
         File fileName = new File("sharks.txt");
         Scanner inputFile = new Scanner(fileName);
 
+        // temp variables for object creation
         String type;
         String name;
-
         int age;
 
         int numOfSharks = inputFile.nextInt();
@@ -36,6 +35,7 @@ public class BilyeuKadenAssignment2
 
         Aquarium aquarium = new Aquarium();
 
+        // reads in sharks from file and creates objects
         for(int i = 0; i < numOfSharks; i++)
         {
 
@@ -43,7 +43,8 @@ public class BilyeuKadenAssignment2
             age = inputFile.nextInt();
             name = inputFile.nextLine();
 
-            switch(type)
+            // I dunno if it'll always be lowercase, but I'll make it so.
+            switch(type.toLowerCase())
             {
                 case "greatwhite":
                     sharks[i] = new GreatWhite(age, name);
@@ -66,14 +67,21 @@ public class BilyeuKadenAssignment2
         displaySharkTable(sharks);
 
         aquarium.fillAquarium(sharks);
-
         aquarium.printAquariumDetails();
-
 
     }
 
+//-------------------start-of-displaySharkTable()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Displays a table of shark information
+     * @param sharks Shark[] | The array of sharks to be displayed.
+     * @return None.
+     */
+
     public static void displaySharkTable(Shark[] sharks)
     {
+        // prints out a formatted table of sharks
         System.out.println("-------------------------------------------------------------------------------------");
 		System.out.printf("%-15s%-10s%-13s%-10s%n", "Type", "Age", "Name", "Physical Description");
         System.out.println("-------------------------------------------------------------------------------------");
@@ -87,6 +95,7 @@ public class BilyeuKadenAssignment2
 
 }
 
+//-------------------start-of-Shark()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Shark
 {
@@ -102,20 +111,52 @@ class Shark
         this.name = name;
     }
 
+//-------------------start-of-getType()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the type of the shark
+     * @param None.
+     * @return String | The type of the shark.
+     */
+
     public String getType()
     {
         return this.type;
     }
+
+//-------------------start-of-getAge()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the age of the shark
+     * @param None.
+     * @return int | The age of the shark.
+     */
 
     public int getAge()
     {
         return this.age;
     }
 
+//-------------------start-of-getName()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the name of the shark
+     * @param None.
+     * @return String | The name of the shark.
+     */
+
     public String getName()
     {
         return this.name;
     }
+
+//-------------------start-of-physicalDescription()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the physical description of the shark
+     * @param None.
+     * @return String | The physical description of the shark.
+     */
 
     public String physicalDescription()
     {
@@ -123,6 +164,8 @@ class Shark
     }
 
 }
+
+//-------------------start-of-GreatWhite()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class GreatWhite extends Shark
 {
@@ -132,6 +175,14 @@ class GreatWhite extends Shark
         super("Great White", age, name);
     }
 
+//-------------------start-of-physicalDescription()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the physical description of the shark
+     * @param None.
+     * @return String | The physical description of the shark.
+     */
+
     @Override
     public String physicalDescription()
     {
@@ -139,6 +190,8 @@ class GreatWhite extends Shark
     }
 
 }
+
+//-------------------start-of-Hammerhead()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Hammerhead extends Shark
 {
@@ -148,6 +201,14 @@ class Hammerhead extends Shark
         super("Hammerhead", age, name);
     }
 
+//-------------------start-of-physicalDescription()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the physical description of the shark
+     * @param None.
+     * @return String | The physical description of the shark.
+     */
+
     @Override
     public String physicalDescription()
     {
@@ -155,6 +216,8 @@ class Hammerhead extends Shark
     }
 
 }
+
+//-------------------start-of-Tiger()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Tiger extends Shark
 {
@@ -164,6 +227,14 @@ class Tiger extends Shark
         super("Tiger", age, name);
     }
 
+//-------------------start-of-physicalDescription()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the physical description of the shark
+     * @param None.
+     * @return String | The physical description of the shark.
+     */
+
     @Override
     public String physicalDescription()
     {
@@ -171,6 +242,8 @@ class Tiger extends Shark
     }
 
 }
+
+//-------------------start-of-Zebra()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Zebra extends Shark
 {
@@ -180,6 +253,14 @@ class Zebra extends Shark
         super("Zebra", age, name);
     }
 
+//-------------------start-of-physicalDescription()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the physical description of the shark
+     * @param None.
+     * @return String | The physical description of the shark.
+     */
+
     @Override
     public String physicalDescription()
     {
@@ -187,6 +268,8 @@ class Zebra extends Shark
     }
 
 }
+
+//-------------------start-of-Aquarium()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Aquarium
 {
@@ -196,9 +279,19 @@ class Aquarium
     
     private Shark[] aquariumSharks;
 
+//-------------------start-of-fillAquarium()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Fills the aquarium with sharks, but only tiger and zebra sharks.
+     * @param sharks Shark[] | The array of sharks to be placed in the aquarium.
+     * @return None.
+     */
+
     public void fillAquarium(Shark[] sharks)
     {
 
+        // counts the number of each type of shark
+        // would've done this in a single loop using an arraylist or some other data structure, but I'm not sure if we're allowed to use those yet.
         for (Shark shark : sharks)
         {
             if (shark instanceof Tiger)
@@ -211,11 +304,13 @@ class Aquarium
             }
         }
 
+        // sets size to the number of each type of shark
         this.aquariumSharks = new Shark[this.numTigerSharks + this.numZebraSharks];
 
         int tigerIndex = 0;
         int zebraIndex = 0;
 
+        // fills the aquarium with sharks
         for (Shark shark : sharks)
         {
             if (shark instanceof Tiger)
@@ -224,15 +319,25 @@ class Aquarium
             }
             else if (shark instanceof Zebra)
             {
+                // this should be able to handle a different order of sharks, my previous method failed to do so.
                 this.aquariumSharks[numTigerSharks + zebraIndex++] = shark;
             }
         }
 
     }
 
+//-------------------start-of-printAquariumDetails()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the details of the aquarium.
+     * @param None.
+     * @return None.
+     */
+
     public void printAquariumDetails()
     {
 
+        // prints out the details of the aquarium in a formatted table
         System.out.println("\nShark Aquarium");
         System.out.println("---------------------------------");
 

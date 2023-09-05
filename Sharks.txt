@@ -1,4 +1,7 @@
-9
+12
+zebra 7 Stripes
+tiger 2 Tigger
+zebra 7 Stripes
 zebra 8 Lucky Z
 greatwhite 50 Blue
 hammerhead 18 Sugar
