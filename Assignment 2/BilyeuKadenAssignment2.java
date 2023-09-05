@@ -193,6 +193,7 @@ class Aquarium
 
     private int numTigerSharks;
     private int numZebraSharks;
+    
     private Shark[] aquariumSharks;
 
     public void fillAquarium(Shark[] sharks)
@@ -212,18 +213,21 @@ class Aquarium
 
         this.aquariumSharks = new Shark[this.numTigerSharks + this.numZebraSharks];
 
+        int tigerIndex = 0;
+        int zebraIndex = 0;
+
         for (Shark shark : sharks)
         {
             if (shark instanceof Tiger)
             {
-                this.aquariumSharks[this.numTigerSharks] = shark;
-
+                this.aquariumSharks[tigerIndex++] = shark;
             }
             else if (shark instanceof Zebra)
             {
-                this.aquariumSharks[this.numZebraSharks] = shark;
+                this.aquariumSharks[numTigerSharks + zebraIndex++] = shark;
             }
         }
+
     }
 
     public void printAquariumDetails()
@@ -240,7 +244,8 @@ class Aquarium
         for (Shark shark : this.aquariumSharks)
         {
 
-            System.out.printf("%-5s%-5s%-5s\n", shark.getType(), " ---", shark.getName());
+            System.out.printf("%-10s%-5s%-9s\n", shark.getType(), "---", shark.getName());
+
         }
     }
 
