@@ -1,0 +1,10 @@
+9
+zebra 8 Lucky Z
+greatwhite 50 Blue
+hammerhead 18 Sugar
+tiger 2 Tigger
+hammerhead 20 Boo Hoo
+tiger 45 Dart
+zebra 14 Mr. Max
+greatwhite 40 Jaws
+zebra 7 Stripes
