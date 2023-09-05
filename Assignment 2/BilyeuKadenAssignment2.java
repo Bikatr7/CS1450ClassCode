@@ -42,16 +42,16 @@ public class BilyeuKadenAssignment2
 
             switch(type)
             {
-                case "GreatWhite":
+                case "greatwhite":
                     sharks[i] = new GreatWhite(age, name);
                     break;
-                case "Hammerhead":
+                case "hammerhead":
                     sharks[i] = new Hammerhead(age, name);
                     break;
-                case "Tiger":
+                case "tiger":
                     sharks[i] = new Tiger(age, name);
                     break;
-                case "Zebra":
+                case "zebra":
                     sharks[i] = new Zebra(age, name);
                     break;
             }
@@ -68,12 +68,12 @@ public class BilyeuKadenAssignment2
     public static void displaySharkTable(Shark[] sharks)
     {
         System.out.println("-------------------------------------------------------------------------------------");
-		System.out.printf("%-10s%-10s%-10s%-7s%n", "Type", "Age", "Name", "Physical Description");
+		System.out.printf("%-15s%-10s%-13s%-10s%n", "Type", "Age", "Name", "Physical Description");
         System.out.println("-------------------------------------------------------------------------------------");
 
         for (Shark shark : sharks)
         {
-            System.out.printf("%-10s%-10s%-10s%-7s%n", shark.getType(), shark.getAge(), shark.getName(), shark.physicalDescription());
+            System.out.printf("%-15s%-10s%-13s%-10s%n", shark.getType(), shark.getAge(), shark.getName(), shark.physicalDescription());
         }
 
     }
@@ -128,7 +128,7 @@ class GreatWhite extends Shark
     @Override
     public String physicalDescription()
     {
-        return "Great White Shark";
+        return "Torpedo-shaped body with a white-colored underside";
     }
 
 }
