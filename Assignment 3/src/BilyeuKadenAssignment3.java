@@ -3,7 +3,7 @@
  * CS 1450-002 (Tuesday/Thursday)
  * Due Thursday, September 13 1:40pm
  * Assignment 3
- * This assignment gives us a chance to learn to write abstract classes and interfaces and practice using arrays and ArrayLists.
+ * This assignment gives us a chance to learn to write abstract classes and interfaces and practice using Arrays and ArrayLists.
  * Read a list of "insects" from file correctly, display info about them, find specific insects, and determine the most able insect.
  */
 
@@ -20,7 +20,7 @@ public class BilyeuKadenAssignment3
         File file = new File("insects.txt");
         Scanner inputFile = new Scanner(file);
 
-        // temporary variables to hold data from file, Initializing them this time.
+        // temporary variables to hold data from file, initializing them this time.
         String type = "";
         int decomposeAbility = 0;
         int predatorAbility = 0;
@@ -60,10 +60,12 @@ public class BilyeuKadenAssignment3
                 case "prayingmantis":
                     insects[i] = new PrayingMantis(name, predatorAbility);
                     break;
-
             }
 
         }
+
+        // close the file after we're done with it
+        inputFile.close();
 
         // task 1; display all insects
         System.out.println("------------------------------------------------------------");
@@ -74,8 +76,6 @@ public class BilyeuKadenAssignment3
         {
             displayInsect(insect);
         }
-
-        inputFile.close();
 
         // task 2; display all insects that are predators and pollinators (using ArrayList)
         System.out.println("------------------------------------------------------------");
