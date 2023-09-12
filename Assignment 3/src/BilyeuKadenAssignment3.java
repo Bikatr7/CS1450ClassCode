@@ -4,10 +4,10 @@
  * Due Thursday, September 13 1:40pm
  * Assignment 3
  * This assignment gives us a chance to learn to write abstract classes and interfaces and practice using arrays and ArrayLists.
- * Read a list of "insects" from file correctly, display info about them, find fit insects, and more.
+ * Read a list of "insects" from file correctly, display info about them, find specific insects, and determine the most able insect.
  */
 
- import java.io.File;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
  
@@ -20,13 +20,13 @@ public class BilyeuKadenAssignment3
         File file = new File("insects.txt");
         Scanner inputFile = new Scanner(file);
 
-        // temporary variables to hold data from file
-        String type;
-        int decomposeAbility;
-        int predatorAbility;
-        int buildAbility;
-        int pollinateAbility;
-        String name;
+        // temporary variables to hold data from file, Initializing them this time.
+        String type = "";
+        int decomposeAbility = 0;
+        int predatorAbility = 0;
+        int buildAbility = 0;
+        int pollinateAbility = 0;
+        String name = "";
 
         int numberOfInsects = inputFile.nextInt();
 
@@ -100,6 +100,15 @@ public class BilyeuKadenAssignment3
 
     }
 
+//-------------------start-of-displayInsect()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * Displays the name, type, and purpose of an insect, as well as any special abilities it has.
+     * @param insect
+     * @return void
+     */
+
     public static void displayInsect(Insect insect)
     {
         System.out.println(insect.getName() + " the " + insect.getType());
@@ -132,21 +141,40 @@ public class BilyeuKadenAssignment3
 
     }
 
+//-------------------start-of-findPredatorsPollinators()----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Finds all insects that are both predators and pollinators but not decomposers or builders.
+     * @param insects
+     * @return ArrayList<Insect>
+     */
+
     public static ArrayList<Insect> findPredatorsPollinators(Insect[] insects)
     {
         ArrayList<Insect> predatorsPollinators = new ArrayList<Insect>();
 
         for(Insect insect: insects)
         {
+            // clarified with professor that we should not only check if it is an instance of both, but also that it is not an instance of the other two
             if(insect instanceof Predator && insect instanceof Pollinator)
             {
-                predatorsPollinators.add(insect);
+                if(insect instanceof Decomposer == false && insect instanceof Builder == false)
+                {
+                    predatorsPollinators.add(insect);
+                }
             }
         }
 
         return predatorsPollinators;
     }
 
+//-------------------start-of-findMostAble()------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Finds the most able insect in an array of insects.
+     * @param insects
+     * @return Insect
+     */
 
     public static Insect findMostAble(Insect[] insects)
     {
@@ -189,7 +217,6 @@ public class BilyeuKadenAssignment3
                 mostAble = insect;
             }
 
-
         }
 
         return mostAble;
@@ -197,51 +224,97 @@ public class BilyeuKadenAssignment3
 
 }
 
+//-------------------start-of-Decomposer----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 interface Decomposer
 {
     public int decompose();
 }
+
+//-------------------start-of-Predator------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 interface Predator
 {
     public int predator();
 }
 
+//-------------------start-of-Builder-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 interface Builder
 {
     public int build();
 }
+
+//-------------------start-of-Pollinator----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 interface Pollinator
 {
     public int pollinate();
 }
 
+//-------------------start-of-Insect-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 abstract class Insect
 {
     private String name;
     private String type;
 
+//-------------------start-of-getName()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the name of the insect.
+     * @return String
+     */
 
     public String getName()
     {
         return name;
     }
 
+//-------------------start-of-getType()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the type of the insect.
+     * @return String
+     */
+
     public String getType()
     {
         return type;
     }
+
+//-------------------start-of-setName()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the name of the insect.
+     * @param name
+     * @return void
+     */
 
     public void setName(String name)
     {
         this.name = name;
     }
 
+//-------------------start-of-setType()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the type of the insect.
+     * @param type
+     * @return void
+     */
+
     public void setType(String type)
     {
         this.type = type;
     }
+
+//-------------------start-of-purpose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the purpose of the insect.
+     * @return String
+     */
 
     public abstract String purpose();
     {
@@ -249,11 +322,15 @@ abstract class Insect
     }
 }
 
+//-------------------start-of-HoneyBee----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class HoneyBee extends Insect implements Builder, Pollinator
 {
 
     private int buildAbility;
     private int pollinateAbility;
+
+//-------------------start-of-HoneyBee()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public HoneyBee(String name, int buildAbility, int pollinateAbility)
     {
@@ -268,11 +345,25 @@ class HoneyBee extends Insect implements Builder, Pollinator
         this.setType("Honey Bee");
     }
 
+//-------------------start-of-build()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the build ability of the HoneyBee.
+     * @return int
+     */
+
     @Override
     public int build()
     {
         return buildAbility;
     }
+
+//-------------------start-of-pollinate()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the pollinate ability of the HoneyBee.
+     * @return int
+     */
 
     @Override
     public int pollinate()
@@ -280,20 +371,30 @@ class HoneyBee extends Insect implements Builder, Pollinator
         return pollinateAbility;
     }
 
+//-------------------start-of-purpose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the purpose of the HoneyBee.
+     * @return String
+     */
+
     @Override
     public String purpose()
     {
         return "I produce honey and pollinate 35% of the crops! Without me, 1/3 of the food you eat would not be available!";
     }
 
-
 }
+
+//-------------------start-of-Ladybug----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Ladybug extends Insect implements Predator, Pollinator
 {
     
     private int predatorAbility;
     private int pollinateAbility;
+
+//-------------------start-of-Ladybug()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Ladybug(String name, int predatorAbility, int pollinateAbility)
     {
@@ -308,17 +409,38 @@ class Ladybug extends Insect implements Predator, Pollinator
         this.setType("Ladybug");
     }
 
+//-------------------start-of-predator()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the predator ability of the Ladybug.
+     * @return int
+     */
+
     @Override
     public int predator()
     {
         return predatorAbility;
     }
 
+//-------------------start-of-pollinate()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the pollinate ability of the Ladybug.
+     * @return int
+     */
+
     @Override
     public int pollinate()
     {
         return pollinateAbility;
     }
+
+//-------------------start-of-purpose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the purpose of the Ladybug.
+     * @return String
+     */
 
     @Override
     public String purpose()
@@ -327,12 +449,16 @@ class Ladybug extends Insect implements Predator, Pollinator
     }
 }
 
+//-------------------start-of-Ant----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class Ant extends Insect implements Decomposer, Predator, Builder
 {
 
     private int decomposeAbility;
     private int predatorAbility;
     private int buildAbility;
+
+//-------------------start-of-Ant()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Ant(String name, int decomposeAbility, int predatorAbility, int buildAbility)
     {
@@ -348,11 +474,25 @@ class Ant extends Insect implements Decomposer, Predator, Builder
         this.setType("Ant");
     }
 
+//-------------------start-of-decompose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the decompose ability of the Ant.
+     * @return int
+     */
+
     @Override
     public int decompose()
     {
         return decomposeAbility;
     }
+
+//-------------------start-of-predator()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the predator ability of the Ant.
+     * @return int
+     */
 
     @Override
     public int predator()
@@ -360,11 +500,25 @@ class Ant extends Insect implements Decomposer, Predator, Builder
         return predatorAbility;
     }
 
+//-------------------start-of-build()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the build ability of the Ant.
+     * @return int
+     */
+
     @Override
     public int build()
     {
         return buildAbility;
     }
+
+//-------------------start-of-purpose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the purpose of the Ant.
+     * @return String
+     */
 
     @Override
     public String purpose()
@@ -373,10 +527,14 @@ class Ant extends Insect implements Decomposer, Predator, Builder
     }
 }
 
+//-------------------start-of-PrayingMantis----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class PrayingMantis extends Insect implements Predator
 {
 
     private int predatorAbility;
+
+//-------------------start-of-PrayingMantis()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public PrayingMantis(String name, int predatorAbility)
     {
@@ -390,11 +548,25 @@ class PrayingMantis extends Insect implements Predator
         this.setType("Praying Mantis");
     }
 
+//-------------------start-of-predator()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the predator ability of the PrayingMantis.
+     * @return int
+     */
+
     @Override
     public int predator()
     {
         return predatorAbility;
     }
+
+//-------------------start-of-purpose()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the purpose of the PrayingMantis.
+     * @return String
+     */
 
     @Override
     public String purpose()
