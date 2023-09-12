@@ -90,6 +90,14 @@ public class BilyeuKadenAssignment3
             System.out.printf("%-18s %-18s %-18d %-18d\n", insect.getName(), insect.getType(), ((Predator) insect).predator(), ((Pollinator) insect).pollinate());
         }
 
+        // task 3; display the most able insect
+        System.out.println("\nTHE MOST ABLE INSECT");
+        System.out.println("------------------------------------------------------------");
+
+        Insect mostAble = findMostAble(insects);
+
+        displayInsect(mostAble);
+
     }
 
     public static void displayInsect(Insect insect)
@@ -140,6 +148,52 @@ public class BilyeuKadenAssignment3
     }
 
 
+    public static Insect findMostAble(Insect[] insects)
+    {
+
+        // note that specsheet has type InsectF23, but I'm assuming that's a typo (insect fall 23?) and it should be Insect
+
+        Insect mostAble = null;
+        
+        int topFitness = 0;
+        int currentFitness = 0;
+
+        for(Insect insect: insects)
+        {
+
+            currentFitness = 0;
+
+            if(insect instanceof Decomposer)
+            {
+                currentFitness += ((Decomposer) insect).decompose();
+            }
+
+            if(insect instanceof Predator)
+            {
+                currentFitness += ((Predator) insect).predator();
+            }
+
+            if(insect instanceof Builder)
+            {
+                currentFitness += ((Builder) insect).build();
+            }
+
+            if(insect instanceof Pollinator)
+            {
+                currentFitness += ((Pollinator) insect).pollinate();
+            }
+
+            if(currentFitness > topFitness)
+            {
+                topFitness = currentFitness;
+                mostAble = insect;
+            }
+
+
+        }
+
+        return mostAble;
+    }
 
 }
 
