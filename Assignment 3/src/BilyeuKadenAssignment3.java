@@ -65,6 +65,7 @@ public class BilyeuKadenAssignment3
 
         }
 
+        // task 1; display all insects
         System.out.println("------------------------------------------------------------");
         System.out.println("All INSECTS IN ARRAY");
         System.out.println("------------------------------------------------------------");
@@ -75,6 +76,19 @@ public class BilyeuKadenAssignment3
         }
 
         inputFile.close();
+
+        // task 2; display all insects that are predators and pollinators (using ArrayList)
+        System.out.println("------------------------------------------------------------");
+        System.out.println("INSECTS THAT ARE PREDATORS AND POLLINATORS");
+        System.out.println("------------------------------------------------------------");
+
+        System.out.printf("%-18s %-18s %-18s %-18s\n", "Insect", "Type", "Predator Ability", "Pollinating Ability");
+        System.out.println("------------------------------------------------------------");
+
+        for (Insect insect : findPredatorsPollinators(insects))
+        {
+            System.out.printf("%-18s %-18s %-18d %-18d\n", insect.getName(), insect.getType(), ((Predator) insect).predator(), ((Pollinator) insect).pollinate());
+        }
 
     }
 
@@ -108,6 +122,21 @@ public class BilyeuKadenAssignment3
         // new line for formatting
         System.out.println();
 
+    }
+
+    public static ArrayList<Insect> findPredatorsPollinators(Insect[] insects)
+    {
+        ArrayList<Insect> predatorsPollinators = new ArrayList<Insect>();
+
+        for(Insect insect: insects)
+        {
+            if(insect instanceof Predator && insect instanceof Pollinator)
+            {
+                predatorsPollinators.add(insect);
+            }
+        }
+
+        return predatorsPollinators;
     }
 
 
