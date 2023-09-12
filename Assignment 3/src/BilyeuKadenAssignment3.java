@@ -118,3 +118,117 @@ class HoneyBee extends Insect implements Builder, Pollinator
 
 
 }
+
+class Ladybug extends Insect implements Predator, Pollinator
+{
+    
+    private int predatorAbility;
+    private int pollinateAbility;
+
+    public Ladybug(String name, int predatorAbility, int pollinateAbility)
+    {
+        // use implicit super constructor
+        super();
+
+        this.predatorAbility = predatorAbility;
+        this.pollinateAbility = pollinateAbility;
+
+        // because we are using the implicit super constructor, we need to set the name and type manually
+        this.setName(name);
+        this.setType("Ladybug");
+    }
+
+    @Override
+    public int predator()
+    {
+        return predatorAbility;
+    }
+
+    @Override
+    public int pollinate()
+    {
+        return pollinateAbility;
+    }
+
+    @Override
+    public String purpose()
+    {
+        return "Named after the Virgin Mary, I'm considered good luck if I land on you! I'm a pest control expert eating up to 5,000 plant pests during my life span.";
+    }
+}
+
+class Ant extends Insect implements Decomposer, Predator, Builder
+{
+
+    private int decomposeAbility;
+    private int predatorAbility;
+    private int buildAbility;
+
+    public Ant(String name, int decomposeAbility, int predatorAbility, int buildAbility)
+    {
+        // use implicit super constructor
+        super();
+
+        this.decomposeAbility = decomposeAbility;
+        this.predatorAbility = predatorAbility;
+        this.buildAbility = buildAbility;
+
+        // because we are using the implicit super constructor, we need to set the name and type manually
+        this.setName(name);
+        this.setType("Ant");
+    }
+
+    @Override
+    public int decompose()
+    {
+        return decomposeAbility;
+    }
+
+    @Override
+    public int predator()
+    {
+        return predatorAbility;
+    }
+
+    @Override
+    public int build()
+    {
+        return buildAbility;
+    }
+
+    @Override
+    public String purpose()
+    {
+        return "Don't squash me, I'm an ecosystem engineer! Me and my 20 million friends accelerate decomposition of dead wood, aerate soil, improve drainage, and eat insects like ticks and termites!";
+    }
+}
+
+class PrayingMantis extends Insect implements Predator
+{
+
+    private int predatorAbility;
+
+    public PrayingMantis(String name, int predatorAbility)
+    {
+        // use implicit super constructor
+        super();
+
+        this.predatorAbility = predatorAbility;
+
+        // because we are using the implicit super constructor, we need to set the name and type manually
+        this.setName(name);
+        this.setType("Praying Mantis");
+    }
+
+    @Override
+    public int predator()
+    {
+        return predatorAbility;
+    }
+
+    @Override
+    public String purpose()
+    {
+        return "'m an extreme predator quick enough to catch a fly. Release me in a garden and I'll eat beetles, grasshoppers, crickets, and even pesky moths.";
+    }
+}
