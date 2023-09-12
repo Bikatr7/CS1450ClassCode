@@ -40,46 +40,76 @@ public class BilyeuKadenAssignment3
             predatorAbility = inputFile.nextInt();
             buildAbility = inputFile.nextInt();
             pollinateAbility = inputFile.nextInt();
-            name = inputFile.nextLine();
+            name = inputFile.nextLine().strip(); // using strip because I noticed some names had a space at the beginning, not sure if that's due to my code but this fixes it
 
+            // once again coercing to lowercase to make sure it matches the switch statement
             switch(type.toLowerCase())
             {
                 case "honeybee":
-                    name = inputFile.next();
-                    buildAbility = inputFile.nextInt();
-                    pollinateAbility = inputFile.nextInt();
                     insects[i] = new HoneyBee(name, buildAbility, pollinateAbility);
                     break;
 
                 case "ladybug":
-                    name = inputFile.next();
-                    predatorAbility = inputFile.nextInt();
-                    pollinateAbility = inputFile.nextInt();
                     insects[i] = new Ladybug(name, predatorAbility, pollinateAbility);
                     break;
 
                 case "ant":
-                    name = inputFile.next();
-                    decomposeAbility = inputFile.nextInt();
-                    predatorAbility = inputFile.nextInt();
-                    buildAbility = inputFile.nextInt();
                     insects[i] = new Ant(name, decomposeAbility, predatorAbility, buildAbility);
                     break;
 
                 case "prayingmantis":
-                    name = inputFile.next();
-                    predatorAbility = inputFile.nextInt();
                     insects[i] = new PrayingMantis(name, predatorAbility);
                     break;
 
             }
+
         }
 
+        System.out.println("------------------------------------------------------------");
+        System.out.println("All INSECTS IN ARRAY");
+        System.out.println("------------------------------------------------------------");
 
+        for(Insect insect: insects)
+        {
+            displayInsect(insect);
+        }
 
         inputFile.close();
 
     }
+
+    public static void displayInsect(Insect insect)
+    {
+        System.out.println(insect.getName() + " the " + insect.getType());
+        System.out.println(insect.purpose() + "");
+
+        if(insect instanceof Decomposer)
+        {
+            System.out.println("Decompose Ability : " + ((Decomposer) insect).decompose());
+        
+        }
+
+        if(insect instanceof Predator)
+        {
+            System.out.println("Predator Ability : " + ((Predator) insect).predator());
+        }
+
+        if(insect instanceof Builder)
+        {
+            System.out.println("Build Ability : " + ((Builder) insect).build());
+        }
+
+        if(insect instanceof Pollinator)
+        {
+            System.out.println("Pollinate Ability : " + ((Pollinator) insect).pollinate());
+            
+        }
+
+        // new line for formatting
+        System.out.println();
+
+    }
+
 
 
 }
