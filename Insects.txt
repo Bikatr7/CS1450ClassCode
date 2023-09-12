@@ -1,0 +1,9 @@
+8
+ant 9 8 6 0 Flik
+ladybug 0 9 0 10 Bugaboo
+honeybee 0 0 8 9 Sweety
+ant 10 7 10 0 Princess Atta
+prayingmantis 0 10 0 0 Manny
+honeybee 0 0 8 8 Polly
+ant 9 9 8 0 The Queen
+ladybug 0 8 0 10 Francis

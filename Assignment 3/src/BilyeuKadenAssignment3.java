@@ -20,6 +20,63 @@ public class BilyeuKadenAssignment3
         File file = new File("insects.txt");
         Scanner inputFile = new Scanner(file);
 
+        // temporary variables to hold data from file
+        String type;
+        int decomposeAbility;
+        int predatorAbility;
+        int buildAbility;
+        int pollinateAbility;
+        String name;
+
+        int numberOfInsects = inputFile.nextInt();
+
+        Insect insects[] = new Insect[numberOfInsects];
+
+        for(int i = 0; i < insects.length; i++)
+        {
+
+            type = inputFile.next();
+            decomposeAbility = inputFile.nextInt();
+            predatorAbility = inputFile.nextInt();
+            buildAbility = inputFile.nextInt();
+            pollinateAbility = inputFile.nextInt();
+            name = inputFile.nextLine();
+
+            switch(type.toLowerCase())
+            {
+                case "honeybee":
+                    name = inputFile.next();
+                    buildAbility = inputFile.nextInt();
+                    pollinateAbility = inputFile.nextInt();
+                    insects[i] = new HoneyBee(name, buildAbility, pollinateAbility);
+                    break;
+
+                case "ladybug":
+                    name = inputFile.next();
+                    predatorAbility = inputFile.nextInt();
+                    pollinateAbility = inputFile.nextInt();
+                    insects[i] = new Ladybug(name, predatorAbility, pollinateAbility);
+                    break;
+
+                case "ant":
+                    name = inputFile.next();
+                    decomposeAbility = inputFile.nextInt();
+                    predatorAbility = inputFile.nextInt();
+                    buildAbility = inputFile.nextInt();
+                    insects[i] = new Ant(name, decomposeAbility, predatorAbility, buildAbility);
+                    break;
+
+                case "prayingmantis":
+                    name = inputFile.next();
+                    predatorAbility = inputFile.nextInt();
+                    insects[i] = new PrayingMantis(name, predatorAbility);
+                    break;
+
+            }
+        }
+
+
+
         inputFile.close();
 
     }
@@ -229,6 +286,6 @@ class PrayingMantis extends Insect implements Predator
     @Override
     public String purpose()
     {
-        return "'m an extreme predator quick enough to catch a fly. Release me in a garden and I'll eat beetles, grasshoppers, crickets, and even pesky moths.";
+        return "I'm an extreme predator quick enough to catch a fly. Release me in a garden and I'll eat beetles, grasshoppers, crickets, and even pesky moths.";
     }
 }
