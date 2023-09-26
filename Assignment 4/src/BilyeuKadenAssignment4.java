@@ -17,6 +17,31 @@ public class BilyeuKadenAssignment4
     public static void main(String[] args) throws IOException
     {
 
+        File file = new File("Team.txt");
+        Scanner inputFile = new Scanner(file);
+
+        String teamName = inputFile.nextLine();
+        int rosterSize = inputFile.nextInt();
+
+        Team team = new Team(teamName, rosterSize);
+
+
+        while(inputFile.hasNext())
+        {
+
+            int ranking = inputFile.nextInt();
+            int rosterSpot = inputFile.nextInt();
+            String name = inputFile.nextLine();
+
+            Player player = new Player(teamName, ranking, name);
+
+            team.addPlayer(rosterSpot, player);
+
+        }
+
+        // close the file
+        inputFile.close();
+
     }
 
 }
@@ -99,6 +124,7 @@ class Player implements Comparable <Player>
         return String.format("%s\t%d\t\t%-10s",team, ranking, name);
     }
 
+    
     @Override
     public int compareTo(Player otherPlayer)
     {
