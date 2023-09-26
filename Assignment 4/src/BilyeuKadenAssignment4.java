@@ -31,7 +31,9 @@ public class BilyeuKadenAssignment4
 
             int ranking = inputFile.nextInt();
             int rosterSpot = inputFile.nextInt();
-            String name = inputFile.nextLine();
+
+            // was told to use trim this time (plus using correct comma)
+            String name = inputFile.nextLine().trim();
 
             Player player = new Player(teamName, ranking, name);
 
@@ -41,6 +43,9 @@ public class BilyeuKadenAssignment4
 
         // close the file
         inputFile.close();
+
+        // display the team
+        team.displayTeam();
 
     }
 
@@ -85,7 +90,39 @@ class Team
 
     public void displayTeam()
     {
-        return;
+
+        System.out.println("----------------------------");
+        System.out.println("TEAM ROSTER for " + name);
+        System.out.println("----------------------------");
+
+        System.out.printf("%-9s %-9s\n", "Spot", "Player Name");
+
+        System.out.println("----------------------------");
+
+        int i = 0;
+
+        while(i < roster.length)
+        {
+
+            String name;
+
+            if(roster[i] != null)
+            {
+
+                name = roster[i].getName();
+            }
+            else
+            {
+                name = "-------";
+            }
+
+            System.out.printf("%-9d %-9s\n", i, name);
+
+
+            i++;
+
+        }
+
     }
 }
 
