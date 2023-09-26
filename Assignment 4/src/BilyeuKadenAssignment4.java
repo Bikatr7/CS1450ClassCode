@@ -47,6 +47,45 @@ public class BilyeuKadenAssignment4
         // display the team
         team.displayTeam();
 
+        // print the roster by ranking
+        printRosterByRanking(team);
+
+    }
+
+    public static void printRosterByRanking(Team team)
+    {
+        // create arraylist to store players
+        ArrayList<Player> players = new ArrayList<Player>();
+
+        int rosterSize = team.getNumberSpots();
+
+        // add players to arraylist
+        for(int i = 0; i < rosterSize; i++)
+        {
+            Player player = team.getPlayer(i);
+
+            if(player != null)
+            {
+                players.add(player);
+            }
+        }
+
+        // sort using comparable
+        Collections.sort(players);
+
+        // print out the roster
+        System.out.println("************************************************************************");
+        System.out.println("PLAYERS ON TEAM");
+        System.out.println("(From Highest Rank to Lowest Rank)");
+        System.out.println("************************************************************************");
+        System.out.println("Team\tRanking\t\tPlayer Name");
+        System.out.println("------------------------------------------------------------------------");
+
+        for (Player player : players)
+        {
+            System.out.printf("%s\t%d\t\t%-10s\n", player.getTeam(), player.getRanking(), player.getName());
+        }
+
     }
 
 }
