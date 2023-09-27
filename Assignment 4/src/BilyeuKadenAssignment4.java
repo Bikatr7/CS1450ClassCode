@@ -41,7 +41,7 @@ public class BilyeuKadenAssignment4
 
         }
 
-        // close the file
+        // close the file 
         inputFile.close();
 
         // display the team
@@ -59,7 +59,6 @@ public class BilyeuKadenAssignment4
      * @param team
      * @return void
      */
-
 
     public static void printRosterByRanking(Team team)
     {
@@ -189,13 +188,12 @@ class Team
 
         System.out.println("----------------------------");
 
-        int i = 0;
-
-        while(i < roster.length)
+        for(int i = 0; i < numberSpots; i++)    
         {
 
             String name;
 
+            // if the spot is not null, get the name
             if(roster[i] != null)
             {
 
@@ -207,9 +205,6 @@ class Team
             }
 
             System.out.printf("%-9d %-9s\n", i, name);
-
-
-            i++;
 
         }
 
