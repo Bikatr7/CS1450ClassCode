@@ -25,18 +25,18 @@ public class BilyeuKadenAssignment4
 
         Team team = new Team(teamName, rosterSize);
 
-
         while(inputFile.hasNext())
         {
 
             int ranking = inputFile.nextInt();
             int rosterSpot = inputFile.nextInt();
 
-            // was told to use trim this time (plus using correct comma)
+            // was told to use trim this time (plus using correct comment format)
             String name = inputFile.nextLine().trim();
 
             Player player = new Player(teamName, ranking, name);
 
+            // add player based on roster spot
             team.addPlayer(rosterSpot, player);
 
         }
@@ -51,6 +51,15 @@ public class BilyeuKadenAssignment4
         printRosterByRanking(team);
 
     }
+
+//-------------------start-of-printRosterByRanking()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the roster by ranking
+     * @param team
+     * @return void
+     */
+
 
     public static void printRosterByRanking(Team team)
     {
@@ -74,9 +83,9 @@ public class BilyeuKadenAssignment4
         Collections.sort(players);
 
         // print out the roster
-        System.out.println("************************************************************************");
-        System.out.println("PLAYERS ON TEAM");
-        System.out.println("(From Highest Rank to Lowest Rank)");
+        System.out.println("\n************************************************************************");
+        System.out.println("\t\t\tPLAYERS ON TEAM");
+        System.out.println("\t\t(From Highest Rank to Lowest Rank)");
         System.out.println("************************************************************************");
         System.out.println("Team\tRanking\t\tPlayer Name");
         System.out.println("------------------------------------------------------------------------");
@@ -90,6 +99,7 @@ public class BilyeuKadenAssignment4
 
 }
 
+//-------------------start-of-Team---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Team 
 {
@@ -98,6 +108,7 @@ class Team
     private int numberSpots;
     private Player [] roster;
 
+//-------------------start-of-Team()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Team (String name, int numberSpots)
     {
@@ -106,26 +117,66 @@ class Team
         this.roster = new Player[numberSpots];
     }
 
+//-------------------start-of-getName()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the name of the team
+     * @param none
+     * @return String
+     */
+
     public String getName()
     {
         return name;
     }
+
+//-------------------start-of-getNumberSpots()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the number of spots on the team roster
+     * @param none
+     * @return int
+     */
 
     public int getNumberSpots()
     {
         return numberSpots;
     }
 
+//-------------------start-of-addPlayer()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Adds a player to the team roster
+     * @param spot
+     * @param player
+     * @return void
+     */
 
     public void addPlayer(int spot, Player player)
     {
         roster[spot] = player;
     }
 
+//-------------------start-of-getPlayer()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the player at the given spot
+     * @param spot
+     * @return Player
+     */
+
     public Player getPlayer(int spot)
     {
         return roster[spot];
     }
+
+//-------------------start-of-displayTeam()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Displays the team roster
+     * @param none
+     * @return void
+     */
 
     public void displayTeam()
     {
@@ -165,12 +216,16 @@ class Team
     }
 }
 
+//-------------------start-of-Player---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class Player implements Comparable <Player>
 {
 
     private String team;
     private int ranking;
     private String name;
+
+//-------------------start-of-Player()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Player (String team, int ranking, String name)
     {
@@ -179,20 +234,52 @@ class Player implements Comparable <Player>
         this.name = name;
     }
 
+//-------------------start-of-getTeam()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the team name
+     * @param none
+     * @return String
+     */
+
     public String getTeam()
     {
         return team;
     }
+
+//-------------------start-of-getRanking()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the player's ranking
+     * @param none
+     * @return int
+     */
 
     public int getRanking()
     {
         return ranking;
     }
 
+//-------------------start-of-getName()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the player's name
+     * @param none
+     * @return String
+     */
+
     public String getName()
     {
         return name;
     }
+
+//-------------------start-of-toString()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the player's information in a string
+     * @param none
+     * @return String
+     */
 
     @Override
     public String toString()
@@ -200,6 +287,13 @@ class Player implements Comparable <Player>
         return String.format("%s\t%d\t\t%-10s",team, ranking, name);
     }
 
+//-------------------start-of-compareTo()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Compares the player's ranking to another player's ranking
+     * @param otherPlayer
+     * @return int
+     */
     
     @Override
     public int compareTo(Player otherPlayer)
