@@ -26,7 +26,6 @@
         }
 
         // part 1
-
         addZeroAfterEvenValues(stack);
 
         System.out.println("Part 1: Stack With Zeros After Even Values");
@@ -38,10 +37,17 @@
 
 //-------------------start-of-addZeroAfterEvenValues()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Adds a zero after every even value in the stack
+     * @param stack
+     * @return void
+     */
+
     public static void addZeroAfterEvenValues (Stack<Integer> stack)
     {
         Stack<Integer> tempStack = new Stack<Integer>();
 
+        // push the values onto the temporary stack and add a zero after each even value
         while(!stack.isEmpty())
         {
             int value = stack.pop();
@@ -65,7 +71,14 @@
 
     }
 
-//-------------------start-of-sortStack()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------start-of-printStack()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the stack
+     * @param stack
+     * @return void
+     */
+
 
     public static void printStack (Stack<Integer> stack)
     {
@@ -73,26 +86,22 @@
         // create a temporary stack
         Stack<Integer> tempStack = new Stack<Integer>();
 
-        // while the stack is not empty
+        // Pop the values off the original stack and push them onto the temporary stack while printing them
         while(!stack.isEmpty())
         {
-            // pop the top value off the stack
+
             int value = stack.pop();
 
-            // print the value
             System.out.print(value + "\n");
 
-            // push the value onto the temporary stack
             tempStack.push(value);
         }
 
-        // while the temporary stack is not empty
+        // put em back
         while(!tempStack.isEmpty())
         {
-            // pop the top value off the temporary stack
             int value = tempStack.pop();
 
-            // push the value back onto the original stack
             stack.push(value);
         }
 
@@ -115,12 +124,22 @@
 
 //-------------------start-of-isEmpty()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Returns true if the stack is empty
+     * @return boolean
+     */
+
     public boolean isEmpty()
     {
         return list.isEmpty();
     }
 
 //-------------------start-of-getSize()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the size of the stack
+     * @return int
+     */
 
     public int getSize()
     {
@@ -129,12 +148,22 @@
 
 //-------------------start-of-peek()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Returns the top element of the stack
+     * @return E
+     */
+
     public E peek()
     {
         return list.get(getSize() - 1);
     }
 
 //-------------------start-of-pop()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes the top element of the stack
+     * @return E
+     */
 
     public E pop()
     {
@@ -144,6 +173,12 @@
     }
 
 //-------------------start-of-push()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Adds an element to the top of the stack
+     * @param o
+     * @return E
+     */
 
     public E push(E o)
     {
