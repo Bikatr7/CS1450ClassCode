@@ -19,10 +19,20 @@
 
         Stack<Integer> stack = new Stack<Integer>();
 
+        // initial push to stack
         for(int value : values)
         {
             stack.push(value);
         }
+
+        // part 1
+
+        addZeroAfterEvenValues(stack);
+
+        System.out.println("Part 1: Stack With Zeros After Even Values");
+        System.out.println("------------------------------------------");
+
+        printStack(stack);
 
     }
 
@@ -47,12 +57,44 @@
             }
         }
 
+        // Restore the original stack
+        while(!tempStack.isEmpty())
+        {
+            stack.push(tempStack.pop());
+        }
+
     }
 
 //-------------------start-of-sortStack()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public static void printStack (Stack<Integer> stack)
     {
+
+        // create a temporary stack
+        Stack<Integer> tempStack = new Stack<Integer>();
+
+        // while the stack is not empty
+        while(!stack.isEmpty())
+        {
+            // pop the top value off the stack
+            int value = stack.pop();
+
+            // print the value
+            System.out.print(value + "\n");
+
+            // push the value onto the temporary stack
+            tempStack.push(value);
+        }
+
+        // while the temporary stack is not empty
+        while(!tempStack.isEmpty())
+        {
+            // pop the top value off the temporary stack
+            int value = tempStack.pop();
+
+            // push the value back onto the original stack
+            stack.push(value);
+        }
 
     }
 
