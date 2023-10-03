@@ -20,6 +20,10 @@
 
         Stack<Integer> stack = new Stack<Integer>();
 
+        // requested constants for grader :)
+        final int REARRANGE_NUMBER = 15;
+        final String REARRANGE_STRING = "Durango";
+
         // initial push to stack
         for(int value : values)
         {
@@ -53,6 +57,58 @@
         System.out.println("---------------------------------------------------");
 
         printStack(integerStackTwo);
+
+        // part 2.5
+
+        rearrangeStacks(integerStackOne, integerStackTwo, REARRANGE_NUMBER);
+
+        System.out.printf("\n\nNumber stack1 rearranged & sorted with values < than %d", REARRANGE_NUMBER);
+        System.out.println("\n---------------------------------------------------");
+
+        printStack(integerStackOne);
+
+        System.out.printf("\n\nNumber stack2 rearranged & sorted with values >= than %d", REARRANGE_NUMBER);
+        System.out.println("\n---------------------------------------------------");
+
+        printStack(integerStackTwo);
+
+        
+    }
+
+//-------------------start-of-rearrangeStacks()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Rearranges the stacks based on a given value
+     * @param stack1
+     * @param stack2
+     * @param rearrangeValue
+     * @return void
+     */
+
+
+    public static <E extends Comparable<E>> void rearrangeStacks(GenericStack<E> stack1, GenericStack<E> stack2, E rearrangeValue)
+    {
+
+        Stack<E> tempStack = new Stack<E>();
+
+        while(!stack1.isEmpty())
+        {
+            E value = stack1.pop();
+
+            if(value.compareTo(rearrangeValue) < 0)
+            {
+                tempStack.push(value);
+            }
+            else
+            {
+                stack2.push(value);
+            }
+        }
+
+        while(!tempStack.isEmpty())
+        {
+            stack1.push(tempStack.pop());
+        }
 
     }
 
