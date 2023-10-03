@@ -16,13 +16,13 @@
     public static void main(String[] args) throws FileNotFoundException
     {
 
-        int[] values = {10, 1, 42, 15, 62, 8, 17, 2};
-
-        Stack<Integer> stack = new Stack<Integer>();
-
         // requested constants for grader :)
         final int REARRANGE_NUMBER = 15;
         final String REARRANGE_STRING = "Durango";
+
+        int[] values = {10, 1, 42, 15, 62, 8, 17, 2};
+
+        Stack<Integer> stack = new Stack<Integer>();
 
         // initial push to stack
         for(int value : values)
