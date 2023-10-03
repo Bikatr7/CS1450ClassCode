@@ -58,9 +58,12 @@
 
         printStack(integerStackTwo);
 
-        // part 2.5
+        // part 2.33
 
         rearrangeStacks(integerStackOne, integerStackTwo, REARRANGE_NUMBER);
+
+        integerStackOne = sortStack(integerStackOne);
+        integerStackTwo = sortStack(integerStackTwo);
 
         System.out.printf("\n\nNumber stack1 rearranged & sorted with values < than %d", REARRANGE_NUMBER);
         System.out.println("\n---------------------------------------------------");
@@ -72,7 +75,66 @@
 
         printStack(integerStackTwo);
 
+        // part 2.66
+
+        System.out.println("\n\nStrings read from file and pushed onto string stack1");
+        System.out.println("---------------------------------------------------");
+
+        printStack(stringStackOne);
+
+        System.out.println("\n\nStrings read from file and pushed onto string stack2");
+        System.out.println("---------------------------------------------------");
+
+        printStack(stringStackTwo);
+
+        // part 2.99
+
+        rearrangeStacks(stringStackOne, stringStackTwo, REARRANGE_STRING);
+
+        stringStackOne = sortStack(stringStackOne);
+        stringStackTwo = sortStack(stringStackTwo);
+
+        System.out.printf("\n\nString stack1 rearranged & sorted with values < than %s", REARRANGE_STRING);
+        System.out.println("\n---------------------------------------------------");
+
+        printStack(stringStackOne);
+
+        System.out.printf("\n\nString stack2 rearranged & sorted with values >= than %s", REARRANGE_STRING);
+        System.out.println("\n---------------------------------------------------");
+
+        printStack(stringStackTwo);
         
+    } // main
+
+//-------------------start-of-sortStack()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sorts the stack
+     * @param unsortedStack
+     * @return GenericStack<E>
+     */
+
+    public static <E extends Comparable<E>> GenericStack<E> sortStack(GenericStack<E> unsortedStack)
+    {
+
+        GenericStack<E> tempStack = new GenericStack<E>();
+
+        while(!unsortedStack.isEmpty())
+        {
+            E value = unsortedStack.pop();
+
+            // same as rearrangeStacks() , only difference is the operator/method
+            while(!tempStack.isEmpty() && value.compareTo(tempStack.peek()) > 0)
+            {
+                unsortedStack.push(tempStack.pop());
+            }
+
+            tempStack.push(value);
+        }
+
+        // done sorting, return the sorted stack
+        return tempStack;
+
     }
 
 //-------------------start-of-rearrangeStacks()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -85,7 +147,6 @@
      * @return void
      */
 
-
     public static <E extends Comparable<E>> void rearrangeStacks(GenericStack<E> stack1, GenericStack<E> stack2, E rearrangeValue)
     {
 
@@ -95,6 +156,7 @@
         {
             E value = stack1.pop();
 
+            // just need to check for less than since >= is fine for the other stack
             if(value.compareTo(rearrangeValue) < 0)
             {
                 tempStack.push(value);
@@ -105,6 +167,7 @@
             }
         }
 
+        // restore the original stack
         while(!tempStack.isEmpty())
         {
             stack1.push(tempStack.pop());
