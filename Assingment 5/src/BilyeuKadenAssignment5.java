@@ -39,7 +39,7 @@
         printStack(stack);
 
         // part 2
- 
+
         GenericStack<Integer> integerStackOne = new GenericStack<Integer>();
         GenericStack<Integer> integerStackTwo = new GenericStack<Integer>();
 
@@ -59,7 +59,6 @@
         printStack(integerStackTwo);
 
         // part 2.33
-
         rearrangeStacks(integerStackOne, integerStackTwo, REARRANGE_NUMBER);
 
         integerStackOne = sortStack(integerStackOne);
@@ -76,7 +75,6 @@
         printStack(integerStackTwo);
 
         // part 2.66
-
         System.out.println("\n\nStrings read from file and pushed onto string stack1");
         System.out.println("---------------------------------------------------");
 
@@ -88,7 +86,6 @@
         printStack(stringStackTwo);
 
         // part 2.99
-
         rearrangeStacks(stringStackOne, stringStackTwo, REARRANGE_STRING);
 
         stringStackOne = sortStack(stringStackOne);
@@ -173,7 +170,7 @@
             }
         }
 
-        // restore the original stack
+        // restore the first stack
         while(!tempStack.isEmpty())
         {
             stack1.push(tempStack.pop());
@@ -224,7 +221,6 @@
      * @param stack
      * @return void
      */
-
 
     public static void printStack(Stack<Integer> stack)
     {
