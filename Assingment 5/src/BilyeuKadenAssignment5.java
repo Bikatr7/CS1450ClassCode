@@ -149,8 +149,14 @@
 
     public static <E extends Comparable<E>> void rearrangeStacks(GenericStack<E> stack1, GenericStack<E> stack2, E rearrangeValue)
     {
-
+     
         Stack<E> tempStack = new Stack<E>();
+
+        // move all elements to stack1
+        while(!stack2.isEmpty())
+        {
+            stack1.push(stack2.pop());
+        }
 
         while(!stack1.isEmpty())
         {
