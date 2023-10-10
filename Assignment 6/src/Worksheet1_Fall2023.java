@@ -30,7 +30,7 @@ public class Worksheet1_Fall2023 {
 		// Worksheet1 Question #2: 
 		// Write code to create a stack of books
 		//*****************************************
-		// ADD YOUR CODE HERE
+		GenericStackW1<BookW1> bookStack = new GenericStackW1<>();
 		
 		
 		
@@ -50,7 +50,7 @@ public class Worksheet1_Fall2023 {
 			// Worksheet1 Question #3: 
 			// Write code to add the book to the stack
 			//****************************************
-			// ADD YOUR CODE HERE
+			bookStack.push(book);
 			
 			
 			
@@ -63,9 +63,16 @@ public class Worksheet1_Fall2023 {
 		// Write code to print the title of each book on the stack.  
 		// Use a while loop to perform this task.
 		//****************************************
-		// ADD YOUR CODE HERE
+
+		while(!bookStack.isEmpty()) {
+			System.out.println(bookStack.pop().getTitle());
+		}
+
+
 		System.out.println();
 		System.out.println("Books");
+
+
 
 
 		
@@ -75,7 +82,10 @@ public class Worksheet1_Fall2023 {
 		// Worksheet1 Question #5
 		// Write one line of code to obtain the top element on the stack without removing it
 		//****************************************
-		// ADD YOUR CODE HERE
+
+		BookW1 topBook = bookStack.peek();
+
+
 		System.out.println();
 		System.out.println();
 
