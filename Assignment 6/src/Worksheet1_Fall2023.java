@@ -1,3 +1,4 @@
+package src;
 // CS1450 Assignment #6 Fall 2023
 // Worksheet #1: Stacks
 //
