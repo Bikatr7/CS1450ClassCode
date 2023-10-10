@@ -31,29 +31,12 @@ public class Worksheet4_Fall2023 {
 		// Create 2 hard coded score objects and add them to player #2's queue
 		player2.addScore(new ScoreW4(42, "05/15/2023"));
 		player2.addScore(new ScoreW4(63, "08/01/2023"));
-		
-		
-		// ***********************************
-		// Worksheet4 Question #3a
-		// Write the declaration for a priority queue of players (PlayerW4 objects)
-		// ***********************************
-		// ADD CODE HERE
-		
-		
-		
-		
-		//********************************
-		// Worksheet4 Question #3b
-		// See Player Class below
-		//********************************
 
 
-		// ***********************************
-		// Worksheet4 Question #3c 
-		// Write code to add player1 and player2 to the priority queue
-		// ***********************************
-		// ADD CODE HERE 
-
+		PriorityQueue<PlayerW4> results = new PriorityQueue<>();
+		
+		results.offer(player1);
+		results.offer(player2);
 		
 		
 		
@@ -85,7 +68,7 @@ class ScoreW4  {
 } // Score
 
 
-class PlayerW4 {
+class PlayerW4 implements Comparable<PlayerW4> {
 	
 	private String name;		
 	
@@ -98,48 +81,41 @@ class PlayerW4 {
 	}
 
 	
-	// ***********************************
-	// Worksheet4 Question #3b
-	// Copy your answer from Worksheet3 here
-	// ***********************************
 	public int getScoresSize() {
-		// ADD CODE HERE
+		return scores.size();
 		
 		
 	}
 	
-	// ***********************************
-	// Worksheet4 Question #3b
-	// Copy your answer from Worksheet3 here
-	// ***********************************
 	public void addScore(ScoreW4 score) {
-		// ADD CODE HERE
+		scores.add(score);
 		
 		
 	}
-		
-	// ***********************************
-	// Worksheet4 Question #3b
-	// Copy your answer from Worksheet3 here
-	// ***********************************
+	
 	public ScoreW4 removeScore() {
-		// ADD CODE HERE
+		return scores.remove();
 		
 		
+	}
+	
+	@Override
+	public int compareTo(PlayerW4 otherThingy) 
+	{
+		if(this.getScoresSize() > otherThingy.getScoresSize())
+		{
+			return 1;
+		}
+		else if(this.getScoresSize() < otherThingy.getScoresSize())
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
-	// ***********************************
-	// Worksheet4 Question #3g 
-	// Add the code from question 4f here
-	// ***********************************
-	// ADD CODE HERE
-	
-	
-	
-	
-	
-	
-	
 
 } // Player
 
