@@ -143,19 +143,19 @@ class PlayerW3  {
 	}
 	
 	public int getScoresSize() {
-		// ADD CODE HERE
+		return scores.size();
 		
 		
 	}
 	
 	public void addScore(ScoreW3 score) {
-		// ADD CODE HERE
+		scores.add(score);
 		
 		
 	}
 	
 	public ScoreW3 removeScore() {
-		// ADD CODE HERE
+		return scores.remove();
 		
 		
 	}
@@ -191,10 +191,8 @@ class TeamW3 {
 	// Add a score to the player in location (spot) in the player array
 	//********************************
 	public void addScoreToPlayer(ScoreW3 score, int spot) {
-		// ADD CODE HERE
-
-	
-	
+		// adds score to player in location (spot) in the player array without creating a new player
+		roster[spot].addScore(score);
 	}	
 
 } // Team
