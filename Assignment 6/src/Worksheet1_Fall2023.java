@@ -84,6 +84,7 @@ public class Worksheet1_Fall2023 {
 		//****************************************
 
 		BookW1 topBook = bookStack.peek();
+		System.out.println("Top book is: " + topBook.getTitle());
 
 
 		System.out.println();

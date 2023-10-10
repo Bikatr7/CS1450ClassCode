@@ -26,8 +26,10 @@ public class Worksheet2_Fall2023 {
 		//*******************************************
 		// ADD CODE HERE
 
-		
-		
+		Queue<BookW2> queueNotNested = new LinkedList<>();
+		queueNotNested.offer(javaBook);
+		queueNotNested.offer(cBook);
+		queueNotNested.offer(pythonBook);
 		
 		
 		
@@ -53,7 +55,11 @@ public class Worksheet2_Fall2023 {
 		// Create an object of type BookQueue and add the three books
 		//********************************
 		// ADD CODE HERE
+		BookQueueW2 bookQueue = new BookQueueW2();
 
+		bookQueue.offer(javaBook);
+		bookQueue.offer(cBook);
+		bookQueue.offer(pythonBook);
 		
 		
 		
@@ -67,6 +73,12 @@ public class Worksheet2_Fall2023 {
 		// ADD CODE HERE	
 		System.out.println();
 		System.out.println("Values in a queue this is nested in a class");
+
+		int queueLength2 = bookQueue.size();
+
+		for (int i = 0; i < queueLength2; i++) {
+			System.out.println("aQueue = " + bookQueue.remove().getTitle());
+		}
 
 
 		
@@ -88,19 +100,19 @@ class BookQueueW2 {
 	private Queue<BookW2> queue = new LinkedList<>();
 
 	public int size() {
-		// ADD CODE HERE
-		
+		return queue.size();		
 		
 	}
 	
 	public void offer(BookW2 book) {
-		// ADD CODE HERE
+		queue.offer(book);
+		
 		
 		
 	}
 	
 	public BookW2 remove() {
-		// ADD CODE HERE
+		return queue.remove();
 		
 		
 	}
