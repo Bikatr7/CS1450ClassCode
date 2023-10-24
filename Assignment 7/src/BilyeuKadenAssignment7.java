@@ -13,4 +13,52 @@ public class BilyeuKadenAssignment7
     {
 
     }    
-}
+
+} // BilyeuKadenAssignment7
+
+//-------------------start-of-EscapeRoom---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class EscapeRoom
+{
+
+//-------------------start-of-hash()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Hashes a string using the Jenkins hash function.
+     * Jenkins hash function provided by the professor.
+     * @param key String - the key to be hashed
+     * @return int - the hash value of the key
+     */
+
+    private int hash(String key) 
+    {
+        int hash = 0;
+
+        for (int i = 0; i < key.length(); i++) 
+        {
+            hash += key.charAt(i);
+            hash += (hash << 10);
+            hash ^= (hash >> 6);
+        }
+
+        hash += (hash << 3);
+        hash ^= (hash >> 11);
+        hash += (hash << 15);
+
+        return Math.abs(hash);
+    } 
+
+//-------------------start-of-tryToEscape()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    public int tryToEscape(String playerName, int playerRanking)
+    {
+        String keyToHash = playerName + playerRanking;
+        int hashValue = hash(keyToHash);
+        int score = hashValue % 101;
+
+        return score;
+
+    }
+
+} // EscapeRoom
