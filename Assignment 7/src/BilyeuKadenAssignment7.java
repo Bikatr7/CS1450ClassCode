@@ -22,7 +22,7 @@ public class BilyeuKadenAssignment7
         String teamName = inputFile.nextLine();
         int rosterSize = inputFile.nextInt();
 
-        Team team = new Team(teamName, rosterSize);
+        Team7 team = new Team7(teamName, rosterSize);
 
         while(inputFile.hasNext())
         {
@@ -33,11 +33,10 @@ public class BilyeuKadenAssignment7
             // was told to use trim this time (plus using correct comment format)
             String name = inputFile.nextLine().trim();
 
-            Player player = new Player(teamName, ranking, name);
+            Player7 player = new Player7(teamName, ranking, name);
 
             // add player based on roster spot
             team.addPlayer(rosterSpot, player);
-
         }
 
         // close the file 
@@ -45,7 +44,6 @@ public class BilyeuKadenAssignment7
 
         // display the team
         team.displayTeam();
-
     }
 
 } // BilyeuKadenAssignment7
@@ -107,8 +105,8 @@ class EscapeRoom
 
 class Game
 {
-    private Queue<Player> players;
-}
+    private Queue<Player7> waitingToPlayQ = new LinkedList<Player7>();
+} // Game
 
 //-------------------start-of-Team7---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -116,7 +114,7 @@ class Team7
 {
     private String name;
     private int numberSpots;
-    private Player [] roster;
+    private Player7 [] roster;
 
 //-------------------start-of-Team7()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -124,7 +122,7 @@ class Team7
     {
         this.name = name;
         this.numberSpots = numberSpots;
-        this.roster = new Player[numberSpots];
+        this.roster = new Player7[numberSpots];
     }
 
 //-------------------start-of-getName()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,10 +154,10 @@ class Team7
     /**
      * Adds a player to the team roster
      * @param spot int - the spot on the roster to add the player
-     * @param player Player - the player to add
+     * @param player Player7 - the player to add
      */
 
-    public void addPlayer(int spot, Player player)
+    public void addPlayer(int spot, Player7 player)
     {
         roster[spot] = player;
     }
@@ -169,10 +167,10 @@ class Team7
     /**
      * Returns the player at the given spot
      * @param spot int - the spot of the player
-     * @return Player - the player at the given spot
+     * @return Player7 - the player at the given spot
      */
 
-    public Player getPlayer(int spot)
+    public Player7 getPlayer(int spot)
     {
         return roster[spot];
     }
@@ -215,7 +213,7 @@ class Team7
         }
 
     }
-}
+} // Team7
 
 //-------------------start-of-Player7---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -227,7 +225,7 @@ class Player7 implements Comparable <Player7>
     private int ranking;
     private int score;
 
-//-------------------start-of-Player()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------start-of-Player7()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Player7(String team, int ranking, String name)
     {
@@ -313,7 +311,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Compares two players based on their score
-     * @param otherPlayer Player - the other player to compare to
+     * @param otherPlayer Player7 - the other player to compare to
      * @return int - -1 if this player's score is less than the other player's score, 1 if this player's score is greater than the other player's score, 0 if they are equal
      */
     
@@ -333,4 +331,4 @@ class Player7 implements Comparable <Player7>
             return 0;
         }
     }
-}
+} // Player7
