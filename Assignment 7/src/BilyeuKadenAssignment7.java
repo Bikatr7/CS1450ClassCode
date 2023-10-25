@@ -131,7 +131,7 @@ class Team7
 
     /**
      * Returns the name of the team
-     * @return String
+     * @return String - the name of the team
      */
 
     public String getName()
@@ -143,7 +143,7 @@ class Team7
 
     /**
      * Returns the number of spots on the team roster
-     * @return int 
+     * @return int - the number of spots on the team roster
      */
 
     public int getNumberSpots()
@@ -169,7 +169,7 @@ class Team7
     /**
      * Returns the player at the given spot
      * @param spot int - the spot of the player
-     * @return Player
+     * @return Player - the player at the given spot
      */
 
     public Player getPlayer(int spot)
@@ -240,7 +240,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the team name
-     * @return String
+     * @return String - the team name
      */
 
     public String getTeam()
@@ -264,7 +264,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the player's name
-     * @return String
+     * @return String - the player's name
      */
 
     public String getName()
@@ -276,7 +276,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the player's score
-     * @return int
+     * @return int - the player's score
      */
 
     public int getScore()
@@ -288,7 +288,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Sets the player's score
-     * @param score int
+     * @param score int - the player's score
      */
 
     public void setScore(int score)
@@ -300,7 +300,7 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the player's information in a string
-     * @return String
+     * @return String - the player's information
      */
 
     @Override
@@ -312,19 +312,19 @@ class Player7 implements Comparable <Player7>
 //-------------------start-of-compareTo()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Compares the player's ranking to another player's ranking
+     * Compares two players based on their score
      * @param otherPlayer Player - the other player to compare to
-     * @return int - -1 if this player's ranking is less than the other player's ranking, 1 if this player's ranking is greater than the other player's ranking, 0 if they are equal
+     * @return int - -1 if this player's score is less than the other player's score, 1 if this player's score is greater than the other player's score, 0 if they are equal
      */
     
     @Override
     public int compareTo(Player7 otherPlayer)
     {
-        if (this.ranking < otherPlayer.ranking)
+        if (this.score < otherPlayer.score)
         {
             return -1;
         }
-        else if (this.ranking > otherPlayer.ranking)
+        else if (this.score > otherPlayer.score)
         {
             return 1;
         }
