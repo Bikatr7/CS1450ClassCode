@@ -33,7 +33,7 @@ public class BilyeuKadenAssignment7
             int ranking = inputFile.nextInt();
             int rosterSpot = inputFile.nextInt();
 
-            // was told to use trim this time (plus using correct comment format)
+            // was told to use trim this time (plus using correct comment format) (I was already using trim so I win)
             String name = inputFile.nextLine().trim();
 
             Player7 player = new Player7(teamName, ranking, name);
@@ -59,7 +59,6 @@ public class BilyeuKadenAssignment7
         gameController.displayResults(game);
 
         // prove that the game is over
-
         System.out.print("\nGame Controller: Proving Game Is Over...");
         System.out.println("\n-----------------------------------------");
 
@@ -93,6 +92,7 @@ class EscapeRoom
             hash ^= (hash >> 6);
         }
 
+        // ngl I don't really understand this part, I read the doc but I still don't get it.
         hash += (hash << 3);
         hash ^= (hash >> 11);
         hash += (hash << 15);
@@ -113,6 +113,8 @@ class EscapeRoom
     {
         String keyToHash = playerName + playerRanking;
         int hashValue = hash(keyToHash);
+
+        // divide by 101 to get a score between 0 and 100
         int score = hashValue % 101;
 
         return score;
@@ -169,6 +171,7 @@ class GameController
         System.out.printf("%-17s %-6s %-9s\n", "Player", "Score", "Current Leader");
         System.out.println("----------------------------------------------------------------");
 
+        // keep track of the current leader
         Player7 currentLeader = null;
 
         while(!game.isWaitingToPlayQEmpty())
@@ -182,6 +185,7 @@ class GameController
 
             game.addPlayerToResultsQ(player);
 
+            // if the current leader is null or the player's score is greater than the current leader's score, set the current leader to the player
             if(currentLeader == null || player.getScore() > currentLeader.getScore())
             {
                 currentLeader = player;
