@@ -223,8 +223,10 @@ class Player7 implements Comparable <Player7>
 {
 
     private String team;
-    private int ranking;
     private String name;
+
+    private int ranking;
+    private int score;
 
 //-------------------start-of-Player()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -239,7 +241,6 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the team name
-     * @param none
      * @return String
      */
 
@@ -252,7 +253,6 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the player's ranking
-     * @param none
      * @return int
      */
 
@@ -265,7 +265,6 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Returns the player's name
-     * @param none
      * @return String
      */
 
@@ -274,11 +273,35 @@ class Player7 implements Comparable <Player7>
         return name;
     }
 
+//-------------------start-of-getScore()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the player's score
+     * @return int
+     */
+
+    public int getScore()
+    {
+        return score;
+    }
+
+//-------------------start-of-setScore()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the player's score
+     * @param score int
+     * @return void
+     */
+
+    public void setScore(int score)
+    {
+        this.score = score;
+    }
+
 //-------------------start-of-toString()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Returns the player's information in a string
-     * @param none
      * @return String
      */
 
@@ -292,8 +315,8 @@ class Player7 implements Comparable <Player7>
 
     /**
      * Compares the player's ranking to another player's ranking
-     * @param otherPlayer
-     * @return int
+     * @param otherPlayer Player - the other player to compare to
+     * @return int - -1 if this player's ranking is less than the other player's ranking, 1 if this player's ranking is greater than the other player's ranking, 0 if they are equal
      */
     
     @Override
