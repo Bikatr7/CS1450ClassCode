@@ -201,6 +201,114 @@ class Game
 
 } // Game
 
+//-------------------start-of-GameController---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class GameController
+{
+
+//-------------------start-of-movePlayersIntoGame()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Moves the players from the team roster into the game
+     * @param team Team7 - the team to move the players from
+     * @param game Game - the game to move the players into
+     */
+
+    public void movePlayersIntoGame(Team7 team, Game game)
+    {
+
+        for(int i = 0; i < team.getNumberSpots(); i++)
+        {
+            Player7 player = team.getPlayer(i);
+
+            if(player != null)
+            {
+                game.addPlayerToWaitingToPlayQ(player);
+                System.out.println("Moved into game: " + player.getName() + "from roster spot: " + i);
+            }
+
+        }
+
+    }
+
+//-------------------start-of-simulateGame()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Simulates the game
+     * @param game Game - the game to simulate
+     */
+
+    public void simulateGame(Game game)
+    {
+        System.out.println("Game Controller: Starting Game - moving players waiting to play into escape room:");
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.printf("%-9s %-9s %-9s\n", "Player", "Score", "Current Leader");
+        System.out.println("----------------------------------------------------------------");
+
+        while(!game.isWaitingToPlayQEmpty())
+        {
+
+            Player7 player = game.removePlayerFromWaitingToPlayQ();
+
+            int score = game.tryToEscape(player.getName(), player.getRanking());
+
+            player.setScore(score);
+
+            game.addPlayerToResultsQ(player);
+
+            System.out.printf("%-9s %-9d %-9s\n", player.getName(), score, game.removePlayerFromResultsQ().getName());
+        }
+
+    }
+
+//-------------------start-of-displayResults()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Displays the results of the game
+     * @param game Game - the game to display the results of
+     */
+
+    public void displayResults(Game game)
+    {
+
+        System.out.println("Game Controller: Escape Room Results");
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.printf("%-9s %-9s \n", "Player", "Score");
+        System.out.println("----------------------------------------------------------------");
+
+        while(!game.isResultsQEmpty())
+        {
+
+            Player7 player = game.removePlayerFromResultsQ();
+
+            System.out.printf("%-9s %-9d \n", player.getName(), player.getScore());
+        }
+    }
+
+//-------------------start-of-isGameOver()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns true if the game is over
+     * @param game Game - the game to check
+     * @return boolean - true if the game is over
+     */
+
+    public boolean isGameOver(Game game)
+    {
+        if(game.isWaitingToPlayQEmpty() && game.isResultsQEmpty())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+}
+
 //-------------------start-of-Team7---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Team7
