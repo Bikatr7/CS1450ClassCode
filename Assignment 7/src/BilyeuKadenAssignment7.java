@@ -22,6 +22,9 @@ public class BilyeuKadenAssignment7
         String teamName = inputFile.nextLine();
         int rosterSize = inputFile.nextInt();
 
+        GameController gameController = new GameController();
+        Game game = new Game();
+
         Team7 team = new Team7(teamName, rosterSize);
 
         while(inputFile.hasNext())
@@ -44,6 +47,19 @@ public class BilyeuKadenAssignment7
 
         // display the team
         team.displayTeam();
+
+        // Start of Assignment 7
+        // move players into the game
+        gameController.movePlayersIntoGame(team, game);
+
+        // simulate the game
+        gameController.simulateGame(game);
+
+        // display the results
+        gameController.displayResults(game);
+
+        // prove that the game is over
+        gameController.isGameOver(game);
     }
 
 } // BilyeuKadenAssignment7
