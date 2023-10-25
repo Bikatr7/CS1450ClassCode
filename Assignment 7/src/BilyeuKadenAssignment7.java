@@ -105,7 +105,100 @@ class EscapeRoom
 
 class Game
 {
-    private Queue<Player7> waitingToPlayQ = new LinkedList<Player7>();
+    private Queue<Player7> waitingToPlayQ;
+    private PriorityQueue<Player7> resultsQ;
+    private EscapeRoom escapeRoom;
+
+//-------------------start-of-Game()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public Game()
+    {
+
+        waitingToPlayQ = new LinkedList<Player7>();
+        resultsQ = new PriorityQueue<Player7>();
+        escapeRoom = new EscapeRoom();
+
+    }
+
+//-------------------start-of-isWaitingToPlayQEmpty()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns true if the waiting to play queue is empty
+     * @return boolean - true if the waiting to play queue is empty
+     */
+
+    public boolean isWaitingToPlayQEmpty()
+    {
+        return waitingToPlayQ.isEmpty();
+    }
+
+//-------------------start-of-addPlayerToWaitingToPlayQ()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Adds a player to the waiting to play queue
+     * @param player Player7 - the player to add
+     */
+
+    public void addPlayerToWaitingToPlayQ(Player7 player)
+    {
+        waitingToPlayQ.add(player);
+    }
+
+//-------------------start-of-removePlayerFromWaitingToPlayQ()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes a player from the waiting to play queue
+     * @return Player7 - the player removed
+     */
+
+    public Player7 removePlayerFromWaitingToPlayQ()
+    {
+        return waitingToPlayQ.remove();
+    }
+
+//-------------------start-of-isResultsQEmpty()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns true if the results queue is empty
+     * @return boolean - true if the results queue is empty
+     */
+
+    public boolean isResultsQEmpty()
+    {
+        return resultsQ.isEmpty();
+    }
+
+//-------------------start-of-addPlayerToResultsQ()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Adds a player to the results queue
+     * @param player Player7 - the player to add
+     */
+
+    public void addPlayerToResultsQ(Player7 player)
+    {
+        resultsQ.add(player);
+    }
+
+//-------------------start-of-removePlayerFromResultsQ()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes a player from the results queue
+     * @return Player7 - the player removed
+     */
+
+    public Player7 removePlayerFromResultsQ()
+    {
+        return resultsQ.remove();
+    }
+
+//-------------------start-of-tryToEscape()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public int tryToEscape(String playerName, int playerRanking)
+    {
+        return escapeRoom.tryToEscape(playerName, playerRanking);
+    }
+
 } // Game
 
 //-------------------start-of-Team7---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -232,6 +325,7 @@ class Player7 implements Comparable <Player7>
         this.team = team;
         this.ranking = ranking;
         this.name = name;
+        this.score = 0;
     }
 
 //-------------------start-of-getTeam()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
