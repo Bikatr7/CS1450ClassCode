@@ -233,6 +233,9 @@ class GameController
     public void movePlayersIntoGame(Team7 team, Game game)
     {
 
+        System.out.println("\nGame Controller: Moving players on Team roster into game");
+        System.out.println("----------------------------------------------------------------");
+
         for(int i = 0; i < team.getNumberSpots(); i++)
         {
             Player7 player = team.getPlayer(i);
@@ -240,7 +243,7 @@ class GameController
             if(player != null)
             {
                 game.addPlayerToWaitingToPlayQ(player);
-                System.out.println("Moved into game: " + player.getName() + "from roster spot: " + i);
+                System.out.println("Moved into game: " + player.getName() + " from roster spot: " + i);
             }
 
         }
@@ -256,7 +259,7 @@ class GameController
 
     public void simulateGame(Game game)
     {
-        System.out.println("Game Controller: Starting Game - moving players waiting to play into escape room:");
+        System.out.println("\nGame Controller: Starting Game - moving players waiting to play into escape room:");
 
         System.out.println("----------------------------------------------------------------");
         System.out.printf("%-9s %-9s %-9s\n", "Player", "Score", "Current Leader");
@@ -405,7 +408,7 @@ class Team7
         System.out.println("TEAM ROSTER for " + name);
         System.out.println("----------------------------");
 
-        System.out.printf("%-9s %-9s\n", "Spot", "Player Name");
+        System.out.printf("%-9s %-9s\n", "Spot", "Name");
 
         System.out.println("----------------------------");
 
