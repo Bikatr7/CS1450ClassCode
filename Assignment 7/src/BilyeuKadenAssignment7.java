@@ -16,7 +16,7 @@ public class BilyeuKadenAssignment7
     public static void main(String[] args) throws IOException
     {
 
-        File file = new File("Team.txt");
+        File file = new File("Team7.txt");
         Scanner inputFile = new Scanner(file);
 
         String teamName = inputFile.nextLine();
@@ -59,6 +59,10 @@ public class BilyeuKadenAssignment7
         gameController.displayResults(game);
 
         // prove that the game is over
+
+        System.out.print("\nGame Controller: Proving Game Is Over...");
+        System.out.println("\n-----------------------------------------");
+
         gameController.isGameOver(game);
     }
 
@@ -165,6 +169,8 @@ class GameController
         System.out.printf("%-9s %-9s %-9s\n", "Player", "Score", "Current Leader");
         System.out.println("----------------------------------------------------------------");
 
+        Player7 currentLeader = null;
+
         while(!game.isWaitingToPlayQEmpty())
         {
 
@@ -176,7 +182,13 @@ class GameController
 
             game.addPlayerToResultsQ(player);
 
-            System.out.printf("%-9s %-9d %-9s\n", player.getName(), score, player.getName());
+            if(currentLeader == null || player.getScore() > currentLeader.getScore())
+            {
+                currentLeader = player;
+            }
+        
+            System.out.printf("%-9s %-9d %-9s\n", player.getName(), player.getScore(), currentLeader.getName());
+
         }
 
     }
@@ -191,7 +203,7 @@ class GameController
     public void displayResults(Game game)
     {
 
-        System.out.println("Game Controller: Escape Room Results");
+        System.out.println("\nGame Controller: Escape Room Results");
 
         System.out.println("----------------------------------------------------------------");
         System.out.printf("%-9s %-9s \n", "Player", "Score");
@@ -218,10 +230,12 @@ class GameController
     {
         if(game.isWaitingToPlayQEmpty() && game.isResultsQEmpty())
         {
+            System.out.print("The game is over and everyone had great time!");
             return true;
         }
         else
         {
+            System.out.print("The game is over and everyone had great time!");
             return false;
         }
     }
