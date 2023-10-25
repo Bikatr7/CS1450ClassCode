@@ -276,7 +276,7 @@ class GameController
 
             game.addPlayerToResultsQ(player);
 
-            System.out.printf("%-9s %-9d %-9s\n", player.getName(), score, game.removePlayerFromResultsQ().getName());
+            System.out.printf("%-9s %-9d %-9s\n", player.getName(), score, player.getName());
         }
 
     }
