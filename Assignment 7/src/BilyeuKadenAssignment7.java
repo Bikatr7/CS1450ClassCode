@@ -539,11 +539,11 @@ class Player7 implements Comparable <Player7>
     @Override
     public int compareTo(Player7 otherPlayer)
     {
-        if (this.score < otherPlayer.score)
+        if (this.score > otherPlayer.score)
         {
             return -1;
         }
-        else if (this.score > otherPlayer.score)
+        else if (this.score < otherPlayer.score)
         {
             return 1;
         }
