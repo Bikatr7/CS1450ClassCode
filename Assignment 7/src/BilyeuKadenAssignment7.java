@@ -166,7 +166,7 @@ class GameController
         System.out.println("\nGame Controller: Starting Game - moving players waiting to play into escape room:");
 
         System.out.println("----------------------------------------------------------------");
-        System.out.printf("%-9s %-9s %-9s\n", "Player", "Score", "Current Leader");
+        System.out.printf("%-17s %-6s %-9s\n", "Player", "Score", "Current Leader");
         System.out.println("----------------------------------------------------------------");
 
         Player7 currentLeader = null;
@@ -187,7 +187,7 @@ class GameController
                 currentLeader = player;
             }
         
-            System.out.printf("%-9s %-9d %-9s\n", player.getName(), player.getScore(), currentLeader.getName());
+            System.out.printf("%-17s %-6d %-9s\n", player.getName(), player.getScore(), currentLeader.getName());
 
         }
 
@@ -206,7 +206,7 @@ class GameController
         System.out.println("\nGame Controller: Escape Room Results");
 
         System.out.println("----------------------------------------------------------------");
-        System.out.printf("%-9s %-9s \n", "Player", "Score");
+        System.out.printf("%-17s %-17s \n", "Player", "Score");
         System.out.println("----------------------------------------------------------------");
 
         while(!game.isResultsQEmpty())
@@ -214,7 +214,7 @@ class GameController
 
             Player7 player = game.removePlayerFromResultsQ();
 
-            System.out.printf("%-9s %-9d \n", player.getName(), player.getScore());
+            System.out.printf("%-17s %-17d \n", player.getName(), player.getScore());
         }
     }
 
