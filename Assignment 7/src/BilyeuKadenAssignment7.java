@@ -84,6 +84,12 @@ class EscapeRoom
 
 //-------------------start-of-tryToEscape()---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Simulates a player trying to escape the room
+     * @param playerName String - the player's name
+     * @param playerRanking int - the player's ranking
+     * @return int - the player's score
+     */
 
     public int tryToEscape(String playerName, int playerRanking)
     {
@@ -108,7 +114,6 @@ class Game
 
 class Team7
 {
-
     private String name;
     private int numberSpots;
     private Player [] roster;
@@ -126,7 +131,6 @@ class Team7
 
     /**
      * Returns the name of the team
-     * @param none
      * @return String
      */
 
@@ -139,8 +143,7 @@ class Team7
 
     /**
      * Returns the number of spots on the team roster
-     * @param none
-     * @return int
+     * @return int 
      */
 
     public int getNumberSpots()
@@ -152,9 +155,8 @@ class Team7
 
     /**
      * Adds a player to the team roster
-     * @param spot
-     * @param player
-     * @return void
+     * @param spot int - the spot on the roster to add the player
+     * @param player Player - the player to add
      */
 
     public void addPlayer(int spot, Player player)
@@ -166,7 +168,7 @@ class Team7
 
     /**
      * Returns the player at the given spot
-     * @param spot
+     * @param spot int - the spot of the player
      * @return Player
      */
 
@@ -179,8 +181,6 @@ class Team7
 
     /**
      * Displays the team roster
-     * @param none
-     * @return void
      */
 
     public void displayTeam()
@@ -221,7 +221,6 @@ class Team7
 
 class Player7 implements Comparable <Player7>
 {
-
     private String team;
     private String name;
 
@@ -290,7 +289,6 @@ class Player7 implements Comparable <Player7>
     /**
      * Sets the player's score
      * @param score int
-     * @return void
      */
 
     public void setScore(int score)
