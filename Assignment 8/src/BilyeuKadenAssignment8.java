@@ -59,4 +59,83 @@ class CodeElement
         return column;
     }
 
-}
+} // end of CodeElement
+
+//-------------------start-of-CodeMachine--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class CodeMachine
+{
+    private char[][] codeGrid;
+    private int numRows;
+    private int numColumns;
+
+//-------------------start-of-CodeMachine()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public CodeMachine(int numRows, int numColumns)
+    {
+        this.numRows = numRows;
+        this.numColumns = numColumns;
+
+        codeGrid = new char[numRows][numColumns];
+    }
+
+//-------------------start-of-loadCodeGrid()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Loads the codeGrid with the characters from the iterator
+     * @param characterIterator Iterator<Character> - the iterator that contains the characters to be loaded into the codeGrid
+     */
+
+    public void loadCodeGrid(Iterator<Character> characterIterator)
+    {
+        for(int i = 0; i < numRows; i++)
+        {
+            for(int j = 0; j < numColumns; j++)
+            {
+                codeGrid[i][j] = characterIterator.next();
+            }
+        }
+    }
+
+//-------------------start-of-decode()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Decodes the message from the iterator
+     * @param messageIterator Iterator<CodeElement> - the iterator that contains the CodeElements to be decoded
+     * @return decodedMessage Iterator<Character> - an iterator that contains the decoded message
+     */
+
+    public Iterator<Character> decode(Iterator<CodeElement> messageIterator)
+    {
+        ArrayList<Character> decodedMessage = new ArrayList<>();
+
+        while(messageIterator.hasNext())
+        {
+            CodeElement codeElement = messageIterator.next();
+
+            decodedMessage.add(codeGrid[codeElement.getRow()][codeElement.getColumn()]);
+        }
+
+        return decodedMessage.iterator();
+    }
+
+//-------------------start-of-printCodeGrid()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the codeGrid
+     */
+
+    public void printCodeGrid()
+    {
+        for(int i = 0; i < numRows; i++)
+        {
+            for(int j = 0; j < numColumns; j++)
+            {
+                System.out.println(codeGrid[i][j]);
+            }
+
+            System.out.println();
+        }
+    }
+ 
+} // end of CodeMachine
