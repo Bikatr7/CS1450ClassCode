@@ -16,6 +16,14 @@ import java.util.*;
     public static void main(String[] args) throws IOException
     {
 
+        File codeGridFile = new File("codeGrid.txt");
+        File testMessageFile = new File("testMessage.txt");
+        File actualMessageFile = new File("message.txt");
+
+        Scanner codeGridScanner = new Scanner(codeGridFile);
+        Scanner testMessageScanner = new Scanner(testMessageFile);
+        Scanner actualMessageScanner = new Scanner(actualMessageFile);
+
     }
 
 }
