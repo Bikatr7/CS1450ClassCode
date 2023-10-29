@@ -24,6 +24,43 @@ import java.util.*;
         Scanner testMessageScanner = new Scanner(testMessageFile);
         Scanner actualMessageScanner = new Scanner(actualMessageFile);
 
+        ArrayList<Character> chars = new ArrayList<>();
+
+        Queue<CodeElement> codeElementsQueue = new LinkedList<>();
+
+        Iterator<Character> message;
+
+        CodeMachine codeMachine;
+
+        codeMachine = new CodeMachine(codeGridScanner.nextInt(), codeGridScanner.nextInt());
+
+        // already read the first two ints, so we need to skip the rest of the line
+        codeGridScanner.nextLine();
+
+        while(codeGridScanner.hasNext())
+        {
+            chars.add(codeGridScanner.next().charAt(0));
+        }
+
+        // load the codeGrid using the chars ArrayList iterator
+        codeMachine.loadCodeGrid(chars.iterator());
+
+        codeMachine.printCodeGrid();
+
+
+        while(testMessageScanner.hasNext())
+        {
+            // I love one-liners
+            codeElementsQueue.add(new CodeElement(testMessageScanner.nextInt(), testMessageScanner.nextInt()));
+        }
+
+        message = codeMachine.decode(codeElementsQueue.iterator());
+
+        while(message.hasNext())
+        {
+            System.out.print(message.next());
+        }
+
     }
 
 }
