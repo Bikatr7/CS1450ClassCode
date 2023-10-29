@@ -17,12 +17,10 @@ import java.util.*;
     {
 
         File codeGridFile = new File("codeGrid.txt");
-        File testMessageFile = new File("testMessage.txt");
-        File actualMessageFile = new File("message.txt");
+        File messageFile = new File("message.txt");
 
         Scanner codeGridScanner = new Scanner(codeGridFile);
-        Scanner testMessageScanner = new Scanner(testMessageFile);
-        Scanner actualMessageScanner = new Scanner(actualMessageFile);
+        Scanner messageScanner = new Scanner(messageFile);
 
         ArrayList<Character> chars = new ArrayList<>();
 
@@ -47,23 +45,29 @@ import java.util.*;
 
         codeMachine.printCodeGrid();
 
-
-        while(testMessageScanner.hasNext())
+        while(messageScanner.hasNext())
         {
             // I love one-liners
-            codeElementsQueue.add(new CodeElement(testMessageScanner.nextInt(), testMessageScanner.nextInt()));
+            codeElementsQueue.add(new CodeElement(messageScanner.nextInt(), messageScanner.nextInt()));
         }
 
         message = codeMachine.decode(codeElementsQueue.iterator());
+
+        System.out.println("\nParrot Secret Decoded Message");
+        System.out.println("--------------------------------------------------------------------");
 
         while(message.hasNext())
         {
             System.out.print(message.next());
         }
 
+        // close the scanners
+        codeGridScanner.close();
+        messageScanner.close();
+
     }
 
-}
+} // end of BilyeuKadenAssignment8
 
 //-------------------start-of-CodeElement--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -172,11 +176,15 @@ class CodeMachine
 
     public void printCodeGrid()
     {
+
+        System.out.println("Code Grid");
+        System.out.println("-----------------------");
+
         for(int i = 0; i < numRows; i++)
         {
             for(int j = 0; j < numColumns; j++)
             {
-                System.out.println(codeGrid[i][j]);
+                System.out.print(codeGrid[i][j] + " ");
             }
 
             System.out.println();
