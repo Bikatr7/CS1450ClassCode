@@ -39,12 +39,22 @@ class Word
 
 //-------------------start-of-isAbecedarian()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Checks if the word is abecedarian or not.
+     * @return abecedarian bool - if the word is abecedarian or not.
+     */
+
     public boolean isAbecedarian()
     {
         return abecedarian;
     }
 
 //-------------------start-of-abecedarianTest()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Tests if the word is abecedarian or not.
+     * @return bool - if the word is abecedarian or not.
+     */
 
     private boolean abecedarianTest()
     {
@@ -61,6 +71,11 @@ class Word
 
 //-------------------start-of-print()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Prints the word and if it is abecedarian or not.
+     * @return String - the word and if it is abecedarian or not.
+     */
+
     public String print()
     {
         return String.format("%s\t\t%b", letters, abecedarian);
@@ -69,9 +84,9 @@ class Word
 //-------------------start-of-compareTo()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Compares two words based on the alphabetical order of the letters in the word.
-     * @param otherWord
-     * @return integer value (-1, 0, 1) based on result of comparing two words.
+     * Compares two words to see which one comes first alphabetically.
+     * @param otherWord Word - the other word to compare to.
+     * @return int - -1 if this word comes first, 1 if the other word comes first, 0 if they are the same.
      */
 
     public int compareTo(Word otherWord)
@@ -100,5 +115,25 @@ class WordLinkedList
 {
     private Word head;
     private int size;
+
+//-------------------start-of-WordLinkedList()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public WordLinkedList()
+    {
+        head = null;
+        size = 0;
+    }
+
+//-------------------start-of-getSize()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Gets the size of the linked list.
+     * @return int - the size of the linked list.
+     */
+
+    public int getSize()
+    {
+        return size;
+    }
 
 }
