@@ -3,8 +3,8 @@
  * CS 1450-002 (Tuesday/Thursday)
  * Due Thursday, November 2nd 1:40pm
  * Assignment 8
- * This assignment allows us to get more familiar with 2D arrays, ArrayLists, queues, and iterators.
- * The goal of the assignment is to decode a secret message from parrots using these tools
+ * This assignment provides a hands-on experience with implementing single-linked and double-linked lists, along with methods for adding, removing, sorting, and printing elements.
+ * The objective of the assignment is to track and manage the linguistic adventures of parrots in Lima. Utilizing single and double linked lists, we will organize a collection of abecedarian words—words with letters in alphabetical order—as discovered by the parrots during their stay.
  */
 
 import java.io.File;
