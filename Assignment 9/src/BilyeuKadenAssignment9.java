@@ -138,6 +138,11 @@ class WordLinkedList
 
 //-------------------start-of-addInFront()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Adds a word to the front of the linked list.
+     * @param wordToAdd Word - the word to add to the front of the linked list.
+     */
+
     public void addInFront(Word wordToAdd)
     {
         Node newNode = new Node(wordToAdd);
@@ -149,6 +154,11 @@ class WordLinkedList
     }
 
 //-------------------start-of-removeNonAbecedarianWords()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes all non-abecedarian words from the linked list.
+     * @return int - the number of words removed.
+     */
 
     public int removeNonAbecedarianWords()
     {
@@ -182,6 +192,71 @@ class WordLinkedList
         }
 
         return numRemoved;
+    }
+
+//-------------------start-of-removeFirstNode()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes the first node from the linked list.
+     * @return Word - the word that was removed.
+     */
+
+    public Word removeFirstNode()
+    {
+        if(head == null)
+        {
+            return null;
+        }
+        else
+        {
+            Word wordToReturn = head.word;
+            head = head.next;
+            size--;
+            return wordToReturn;
+        }
+    
+    }
+
+//-------------------start-of-bubbleSort()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sorts the linked list using bubble sort.
+     */
+
+    public void bubbleSort()
+    {
+        boolean swapped = true;
+
+        while(swapped)
+        {
+            swapped = false;
+
+            Node current = head;
+            Node previous = null;
+
+            while(current.next != null)
+            {
+                if(current.word.compareTo(current.next.word) > 0)
+                {
+                    if(previous == null)
+                    {
+                        head = current.next;
+                    }
+                    else
+                    {
+                        previous.next = current.next;
+                    }
+
+                    current.next = current.next.next;
+                    previous.next.next = current;
+
+                    swapped = true;
+                }
+
+                previous = current;
+                current = current.next;
+            }
+        }
     }
 
 //-------------------start-of-Node--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
