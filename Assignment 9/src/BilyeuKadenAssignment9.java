@@ -338,6 +338,23 @@ class DoubleLinkedList
 
         }
 
+//-------------------start-of-printListBackwards()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        /**
+         * Prints the double linked list backwards.
+         */
+
+        public void printListBackwards()
+        {
+            Node current = tail;
+
+            while(current != null)
+            {
+                System.out.println(current.word.print());
+                current = current.previous;
+            }
+        }
+
 //-------------------start-of-Node--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         private static class Node
@@ -355,7 +372,7 @@ class DoubleLinkedList
                 previous = null;
             }
 
-        } // end of Node
+         // end of Node
         }
 
 } // end of DoubleLinkedList
