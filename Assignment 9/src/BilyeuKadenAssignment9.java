@@ -18,6 +18,7 @@ public class BilyeuKadenAssignment9
     {
         // variables
         WordLinkedList wordList = new WordLinkedList();
+        DoubleLinkedList doubleList = new DoubleLinkedList();
 
         File wordFile = new File("words.txt");
 
@@ -42,9 +43,23 @@ public class BilyeuKadenAssignment9
         System.out.println("Number of non-abecedarian removed = " + numRemoved + "\n\n");
         wordList.printList();
 
+        // part 3 (sorted list)
+        wordList.bubbleSort();
+
+        System.out.println("\n\n\nBubble sorted linked list of abecedarian words\n\n");
+        wordList.printList();
+
+        // part 4 (double linked list built from single linked list)
+        doubleList.build(wordList);
+
+        System.out.println("\n\n\nDouble linked list of abecedarian words backwards\n\n");
+        doubleList.printListBackwards();
+
+        System.out.println("\n\nSize of the wordLinkedList = " + wordList.getSize());
 
 
-    }
+
+    } // end of main
 
 }
 
@@ -376,6 +391,9 @@ class DoubleLinkedList
         public void printListBackwards()
         {
             Node current = tail;
+
+            System.out.println("Word\t\tAbecedarian Status");
+            System.out.println("---------------------------------------");
 
             while(current != null)
             {
