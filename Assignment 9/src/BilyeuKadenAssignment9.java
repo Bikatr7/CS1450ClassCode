@@ -57,6 +57,9 @@ public class BilyeuKadenAssignment9
 
         System.out.println("\n\nSize of the wordLinkedList = " + wordList.getSize());
 
+        // close the scanner
+        wordScanner.close();
+
     } // end of main
 
 }
