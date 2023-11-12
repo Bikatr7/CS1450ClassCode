@@ -308,7 +308,35 @@ class DoubleLinkedList
             tail = null;
         }
 
-        
+//-------------------start-of-build()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        /**
+         *  Removes a node from the incoming single linked list and adds it to the end of the double linked list.
+         * @param wordList
+         */
+
+        public void build(WordLinkedList wordList)
+        {
+
+            while(wordList.getSize() > 0)
+            {
+                Word wordToAdd = wordList.removeFirstNode();
+                Node newNode = new Node(wordToAdd);
+
+                if(head == null)
+                {
+                    head = newNode;
+                    tail = newNode;
+                }
+                else
+                {
+                    tail.next = newNode;
+                    newNode.previous = tail;
+                    tail = newNode;
+                }
+            }
+
+        }
 
 //-------------------start-of-Node--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
