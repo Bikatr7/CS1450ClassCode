@@ -77,6 +77,19 @@ class Word
     public int compareTo(Word otherWord)
     {
 
+        if(this.letters.compareTo(otherWord.letters) < 0)
+        {
+            return -1;
+        }
+        else if(this.letters.compareTo(otherWord.letters) > 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+
     }
 
 } // end of Word
