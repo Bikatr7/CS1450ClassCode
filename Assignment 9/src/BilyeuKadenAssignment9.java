@@ -3,8 +3,8 @@
  * CS 1450-002 (Tuesday/Thursday)
  * Due Tuesday, November 14th 1:40pm
  * Assignment 9
- * *This assignment copypasta*
- * *The goal of this copypasta*
+ * This assignment provides a hands-on experience with implementing single-linked and double-linked lists, along with methods for adding, removing, sorting, and printing elements.
+ * The objective of the assignment is to track and manage the linguistic adventures of parrots in Lima. Utilizing single and double linked lists, we will organize a collection of abecedarian words—words with letters in alphabetical order—as discovered by the parrots during their stay.
  */
 
 import java.io.File;
@@ -56,8 +56,6 @@ public class BilyeuKadenAssignment9
         doubleList.printListBackwards();
 
         System.out.println("\n\nSize of the wordLinkedList = " + wordList.getSize());
-
-
 
     } // end of main
 
@@ -253,6 +251,7 @@ class WordLinkedList
             Word wordToReturn = head.word;
             head = head.next;
             size--;
+
             return wordToReturn;
         }
     
@@ -288,6 +287,10 @@ class WordLinkedList
     }
 
 //-------------------start-of-printList()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the linked list.
+     */
 
     public void printList()
     {
@@ -355,7 +358,7 @@ class DoubleLinkedList
 //-------------------start-of-build()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         /**
-         *  Removes a node from the incoming single linked list and adds it to the end of the double linked list.
+         * Removes a node from the incoming single linked list and adds it to the end of the double linked list.
          * @param wordList
          */
 
