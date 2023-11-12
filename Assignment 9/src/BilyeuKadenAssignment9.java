@@ -361,7 +361,7 @@ class DoubleLinkedList
 //-------------------start-of-build()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         /**
-         * Removes a node from the incoming single linked list and adds it to the end of the double linked list.
+         * Builds a double linked list from a single linked list.
          * @param wordList
          */
 
