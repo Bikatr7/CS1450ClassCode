@@ -17,6 +17,21 @@ public class BilyeuKadenAssignment9
     public static void main(String[] args) throws IOException
     {
 
+        WordLinkedList wordList = new WordLinkedList();
+
+        File wordFile = new File("words.txt");
+
+        Scanner wordScanner = new Scanner(wordFile);
+
+        while(wordScanner.hasNext())
+        {
+            wordList.addInFront(new Word(wordScanner.next()));
+        }
+
+        System.out.println("Words in the linked list\n\n");
+
+        wordList.printList();
+
 
     }
 
@@ -251,6 +266,9 @@ class WordLinkedList
     public void printList()
     {
         Node current = head;
+
+        System.out.println("Word\t\tAbecedarian Status");
+        System.out.println("---------------------------------------");
 
         while(current != null)
         {
