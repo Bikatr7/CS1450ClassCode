@@ -232,31 +232,33 @@ class WordLinkedList
             swapped = false;
 
             Node current = head;
-            Node previous = null;
 
-            while(current.next != null)
+            while(current != null && current.next != null)
             {
                 if(current.word.compareTo(current.next.word) > 0)
                 {
-                    if(previous == null)
-                    {
-                        head = current.next;
-                    }
-                    else
-                    {
-                        previous.next = current.next;
-                    }
-
-                    current.next = current.next.next;
-                    previous.next.next = current;
-
+                    swapNodeData(current, current.next);
                     swapped = true;
                 }
 
-                previous = current;
                 current = current.next;
             }
         }
+    }
+
+//-------------------start-of-swapNodeData()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Swaps the data of two nodes.
+     * @param node1 Node - the first node to swap.
+     * @param node2 Node - the second node to swap.
+     */
+
+    public void swapNodeData(Node node1, Node node2)
+    {
+        Word temp = node1.word;
+        node1.word = node2.word;
+        node2.word = temp;
     }
 
 //-------------------start-of-Node--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
