@@ -16,21 +16,32 @@ public class BilyeuKadenAssignment9
 
     public static void main(String[] args) throws IOException
     {
-
+        // variables
         WordLinkedList wordList = new WordLinkedList();
 
         File wordFile = new File("words.txt");
 
         Scanner wordScanner = new Scanner(wordFile);
 
+        int numRemoved;
+
+        // fill the linked list with words from the file
         while(wordScanner.hasNext())
         {
             wordList.addInFront(new Word(wordScanner.next()));
         }
 
+        // part 1 (initial list)
         System.out.println("Words in the linked list\n\n");
-
         wordList.printList();
+
+        // part 2 (non-abecedarian words)
+        numRemoved = wordList.removeNonAbecedarianWords();
+
+        System.out.println("\n\n\nRemoving non-abecedarian words...");
+        System.out.println("Number of non-abecedarian removed = " + numRemoved + "\n\n");
+        wordList.printList();
+
 
 
     }
