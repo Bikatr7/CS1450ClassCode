@@ -148,6 +148,42 @@ class WordLinkedList
     
     }
 
+//-------------------start-of-removeNonAbecedarianWords()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public int removeNonAbecedarianWords()
+    {
+        int numRemoved = 0;
+
+        Node current = head;
+        Node previous = null;
+
+        while(current != null)
+        {
+            if(!current.word.isAbecedarian())
+            {
+                if(previous == null)
+                {
+                    head = current.next;
+                }
+                else
+                {
+                    previous.next = current.next;
+                }
+
+                numRemoved++;
+                size--;
+            }
+            else
+            {
+                previous = current;
+            }
+
+            current = current.next;
+        }
+
+        return numRemoved;
+    }
+
 //-------------------start-of-Node--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private static class Node
