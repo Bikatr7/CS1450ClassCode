@@ -80,7 +80,7 @@ public class Worksheet1_Fall2023 {
 		
 		//****************************************
 		// Worksheet1 Question #5
-		// Write one line of code to obtain the top element on the stack without removing it
+		// Write one line of code to obtain the top element on the stack without removing it 
 		//****************************************
 
 		BookW1 topBook = bookStack.peek();
