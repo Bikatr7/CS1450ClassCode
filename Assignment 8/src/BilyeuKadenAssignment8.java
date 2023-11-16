@@ -186,7 +186,7 @@ class CodeMachine
             {
                 System.out.print(codeGrid[i][j] + " ");
             }
-
+ 
             System.out.println();
         }
     }
