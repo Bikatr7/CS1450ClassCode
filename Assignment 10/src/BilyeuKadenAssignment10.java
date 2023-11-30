@@ -1,8 +1,8 @@
 /*
  * Kaden Bilyeu
  * CS 1450-002 (Tuesday/Thursday)
- * Due Tuesday, November 14th 1:40pm
- * Assignment 9
+ * Due Tuesday, December 5th 1:40pm
+ * Assignment 10
  * This assignment allows some crucial hands on experience with binary trees, and the methods used to traverse them, such as level order traversal and visiting leaves, and inserting nodes.
  * The objective of the assignment is to create a binary tree of parrots, and then print the song lyrics of the parrots in level order, and then print the names of the parrots that are leaves.
  */
@@ -16,7 +16,6 @@ public class BilyeuKadenAssignment10
 
     public static void main(String[] args) throws IOException
     {
-
         // fancy variables
         BinaryTree tree = new BinaryTree();
 
@@ -39,7 +38,6 @@ public class BilyeuKadenAssignment10
         }
 
         // Get the song lyrics
-
         System.out.println("\nParrot Christmas Song");
         System.out.println("----------------------");
 
@@ -59,7 +57,7 @@ public class BilyeuKadenAssignment10
         // -Kaden
     }
 
-}
+} // end of BilyeuKadenAssignment10
 
 //-------------------start-of-Parrot--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
