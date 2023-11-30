@@ -27,9 +27,17 @@ public class BilyeuKadenAssignment10
 
             int id = parrotScanner.nextInt();
             String name = parrotScanner.next();
-            String message = parrotScanner.nextLine();
+            String songPhrase = parrotScanner.nextLine();
+
+            Parrot newParrot = new Parrot(id, name, songPhrase);
+
+            tree.insert(newParrot);
 
         }
+
+        tree.levelOrder();
+
+        tree.visitLeaves();
 
 
 
@@ -184,7 +192,7 @@ class BinaryTree
         {
             TreeNode node = queue.remove();
 
-            System.out.println(node.parrot.getName());
+            System.out.print(node.parrot.getSongPhrase());
 
             if (node.left != null)
             {
