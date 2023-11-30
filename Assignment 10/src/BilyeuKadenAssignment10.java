@@ -17,17 +17,20 @@ public class BilyeuKadenAssignment10
     public static void main(String[] args) throws IOException
     {
 
+        // fancy variables
         BinaryTree tree = new BinaryTree();
 
         File parrotFile = new File("parrotsTest.txt");
         Scanner parrotScanner = new Scanner(parrotFile);
 
+        // read file and load into tree
         while(parrotScanner.hasNext())
         {
-
             int id = parrotScanner.nextInt();
             String name = parrotScanner.next();
-            String songPhrase = parrotScanner.nextLine();
+
+            // trim my beloved.
+            String songPhrase = parrotScanner.nextLine().trim();
 
             Parrot newParrot = new Parrot(id, name, songPhrase);
 
@@ -35,12 +38,16 @@ public class BilyeuKadenAssignment10
 
         }
 
+        // Get the song lyrics
         tree.levelOrder();
 
+        // Show leaves
         tree.visitLeaves();
 
+        // close file
+        parrotScanner.close();
 
-
+        // Thanks for all the word grader. Have a great break!
     }
 
 }
@@ -96,11 +103,11 @@ class Parrot implements Comparable<Parrot>
 
     public int compareTo(Parrot otherParrot)
     {
-        if (this.id < otherParrot.id) 
+        if(this.id < otherParrot.id) 
         {
             return -1;
         } 
-        else if (this.id > otherParrot.id) 
+        else if(this.id > otherParrot.id) 
         {
             return 1;
         } 
@@ -110,7 +117,7 @@ class Parrot implements Comparable<Parrot>
         }
     }
 
-} 
+} // end of Parrot
 
 //-------------------start-of-BinaryTree--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -138,7 +145,8 @@ class BinaryTree
     {
         TreeNode newNode = new TreeNode(parrot);
 
-        if (root == null)
+        // if the tree is empty, insert the parrot as the root
+        if(root == null)
         {
             root = newNode;
             return true;
@@ -148,11 +156,12 @@ class BinaryTree
             TreeNode current = root;
             TreeNode parent = null;
 
-            while (true)
+            while(true)
             {
                 parent = current;
 
-                if (parrot.compareTo(current.parrot) < 0)
+                // if the parrot is less than the current parrot, go left
+                if(parrot.compareTo(current.parrot) < 0)
                 {
                     current = current.left;
 
@@ -162,15 +171,21 @@ class BinaryTree
                         return true;
                     }
                 }
-                else
+                // if the parrot is greater than the current parrot, go right
+                else if(parrot.compareTo(current.parrot) > 0)
                 {
                     current = current.right;
 
-                    if (current == null)
+                    if(current == null)
                     {
                         parent.right = newNode;
                         return true;
                     }
+                }
+                // if the parrot is already in the tree, return false
+                else
+                {
+                    return false;
                 }
             }
         }
@@ -184,22 +199,24 @@ class BinaryTree
 
     public void levelOrder()
     {
+        // create a queue for the level order traversal to hold the nodes
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
 
         queue.add(root);
 
-        while (!queue.isEmpty())
+        while(!queue.isEmpty())
         {
             TreeNode node = queue.remove();
 
             System.out.print(node.parrot.getSongPhrase());
 
-            if (node.left != null)
+            //
+            if(node.left != null)
             {
                 queue.add(node.left);
             }
 
-            if (node.right != null)
+            if(node.right != null)
             {
                 queue.add(node.right);
             }
@@ -226,12 +243,13 @@ class BinaryTree
 
     private void visitLeaves(TreeNode node)
     {
-        if (node != null)
+        if(node != null)
         {
-            if (node.left == null && node.right == null)
+            if(node.left == null && node.right == null)
             {
-                System.out.println(node.parrot.getName());
+                System.out.print(node.parrot.getName());
             }
+            // if the node is not a leaf, go left and right to find leaves
             else
             {
                 visitLeaves(node.left);
@@ -259,6 +277,6 @@ class BinaryTree
             right = null;
         }
     
-    }
+    } // end of TreeNode
 
-}
+} // end of BinaryTree
