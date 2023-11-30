@@ -54,7 +54,7 @@ public class BilyeuKadenAssignment10
         // close file
         parrotScanner.close();
 
-        // Thanks for all the word grader. Have a great break!
+        // Thanks for all the work grader. Have a great break!
         // Pretty sure this is the last assignment I'll have.
         // -Kaden
     }
