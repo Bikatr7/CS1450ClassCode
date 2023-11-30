@@ -17,6 +17,22 @@ public class BilyeuKadenAssignment10
     public static void main(String[] args) throws IOException
     {
 
+        BinaryTree tree = new BinaryTree();
+
+        File parrotFile = new File("parrotsTest.txt");
+        Scanner parrotScanner = new Scanner(parrotFile);
+
+        while(parrotScanner.hasNext())
+        {
+
+            int id = parrotScanner.nextInt();
+            String name = parrotScanner.next();
+            String message = parrotScanner.nextLine();
+
+        }
+
+
+
     }
 
 }
