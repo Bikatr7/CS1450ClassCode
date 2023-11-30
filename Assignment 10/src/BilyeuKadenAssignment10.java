@@ -102,6 +102,120 @@ class BinaryTree
         root = null;
     }
 
+//-------------------start-of-insert()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Inserts a parrot into the binary tree.
+     * @param parrot Parrot - the parrot to insert into the binary tree.
+     * @return boolean - true if the parrot was inserted, false if the parrot was not inserted.
+     */
+
+    public boolean insert(Parrot parrot)
+    {
+        TreeNode newNode = new TreeNode(parrot);
+
+        if (root == null)
+        {
+            root = newNode;
+            return true;
+        }
+        else
+        {
+            TreeNode current = root;
+            TreeNode parent = null;
+
+            while (true)
+            {
+                parent = current;
+
+                if (parrot.compareTo(current.parrot) < 0)
+                {
+                    current = current.left;
+
+                    if (current == null)
+                    {
+                        parent.left = newNode;
+                        return true;
+                    }
+                }
+                else
+                {
+                    current = current.right;
+
+                    if (current == null)
+                    {
+                        parent.right = newNode;
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+//-------------------start-of-levelOrder()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the parrots in the binary tree in level order.
+     */
+
+    public void levelOrder()
+    {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+
+        queue.add(root);
+
+        while (!queue.isEmpty())
+        {
+            TreeNode node = queue.remove();
+
+            System.out.println(node.parrot.getName());
+
+            if (node.left != null)
+            {
+                queue.add(node.left);
+            }
+
+            if (node.right != null)
+            {
+                queue.add(node.right);
+            }
+        }
+    }
+
+//-------------------start-of-visitLeaves()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the parrots in the binary tree that are leaves.
+     */
+
+    public void visitLeaves()
+    {
+        visitLeaves(root);
+    }
+
+//-------------------start-of-visitLeaves()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Prints the parrots in the binary tree that are leaves.
+     * @param node TreeNode - the node to start at.
+     */
+
+    private void visitLeaves(TreeNode node)
+    {
+        if (node != null)
+        {
+            if (node.left == null && node.right == null)
+            {
+                System.out.println(node.parrot.getName());
+            }
+            else
+            {
+                visitLeaves(node.left);
+                visitLeaves(node.right);
+            }
+        }
+    }
+
 //-------------------start-of-TreeNode()--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private class TreeNode
