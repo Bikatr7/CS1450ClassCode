@@ -3,11 +3,11 @@
  * CS 1450-002 (Tuesday/Thursday)
  * Due Tuesday, November 14th 1:40pm
  * Assignment 9
- * This assignment allows some crucial hands on experience with binary trees
- * More shit here that i'll add later.
+ * This assignment allows some crucial hands on experience with binary trees, and the methods used to traverse them, such as level order traversal and visiting leaves, and inserting nodes.
+ * The objective of the assignment is to create a binary tree of parrots, and then print the song lyrics of the parrots in level order, and then print the names of the parrots that are leaves.
  */
 
- import java.io.File;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -20,7 +20,7 @@ public class BilyeuKadenAssignment10
         // fancy variables
         BinaryTree tree = new BinaryTree();
 
-        File parrotFile = new File("parrotsTest.txt");
+        File parrotFile = new File("parrots.txt");
         Scanner parrotScanner = new Scanner(parrotFile);
 
         // read file and load into tree
@@ -39,15 +39,24 @@ public class BilyeuKadenAssignment10
         }
 
         // Get the song lyrics
+
+        System.out.println("\nParrot Christmas Song");
+        System.out.println("----------------------");
+
         tree.levelOrder();
 
         // Show leaves
+        System.out.println("\n\nParrots on Leave Nodes");
+        System.out.println("----------------------");
+
         tree.visitLeaves();
 
         // close file
         parrotScanner.close();
 
         // Thanks for all the word grader. Have a great break!
+        // Pretty sure this is the last assignment I'll have.
+        // -Kaden
     }
 
 }
@@ -208,9 +217,9 @@ class BinaryTree
         {
             TreeNode node = queue.remove();
 
-            System.out.print(node.parrot.getSongPhrase());
+            System.out.print(node.parrot.getSongPhrase() + " ");
 
-            //
+            // add the left and right nodes to the queue
             if(node.left != null)
             {
                 queue.add(node.left);
@@ -247,7 +256,7 @@ class BinaryTree
         {
             if(node.left == null && node.right == null)
             {
-                System.out.print(node.parrot.getName());
+                System.out.println(node.parrot.getName());
             }
             // if the node is not a leaf, go left and right to find leaves
             else
