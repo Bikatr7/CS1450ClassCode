@@ -44,7 +44,7 @@ public class BilyeuKadenAssignment10
         tree.levelOrder();
 
         // Show leaves
-        System.out.println("\n\nParrots on Leave Nodes");
+        System.out.println("\n\nParrots on Leaf Nodes");
         System.out.println("----------------------");
 
         tree.visitLeaves();
